@@ -10,4 +10,4 @@ Professor: Jayr Alencar Pereira
 
 Integrantes: José Railson Leite da Silva
              José Junio de Souza Matias 
-             Macos felipe eduardo                                  					   
+             Marcos Felipe Ferreira Duarte                                 					   
