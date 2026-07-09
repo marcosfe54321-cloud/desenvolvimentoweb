@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empreenda+ Elas - Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcfbfa;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Menu Lateral (Sidebar) */
+        .sidebar {
+            width: 260px;
+            background-color: #ffffff;
+            border-right: 1px solid #e8e2da;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: #3d3d3d;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 15px;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item a {
+            display: block;
+            padding: 12px 16px;
+            color: #615e5a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover {
+            background-color: #f7f3ed;
+            color: #a63232;
+        }
+
+        .nav-item.active a {
+            background-color: #f7eded;
+            color: #a63232;
+            font-weight: 600;
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #615e5a;
+            font-weight: 500;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            background-color: #e5dcd3;
+            border-radius: 50%;
+        }
+
+        /* Seção de Boas-vindas */
+        .welcome-section {
+            margin-bottom: 36px;
+        }
+
+        .welcome-title {
+            font-size: 32px;
+            color: #1a1a1a;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .welcome-subtitle {
+            color: #7a756e;
+            font-size: 15px;
+        }
+
+        /* Grid de Cards de Destaque */
+        .overview-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-card {
+            background-color: #ffffff;
+            border: 1px solid #e8e2da;
+            border-radius: 10px;
+            padding: 24px;
+            flex: 1;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 140px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #7b5294; /* Tom roxo/púrpura dos rótulos internos */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .card-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .card-subtext {
+            font-size: 13px;
+            color: #7a756e;
+        }
+
+        /* Componente da Barra de Progresso */
+        .progress-wrapper {
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .progress-bg {
+            width: 100%;
+            height: 8px;
+            background-color: #f0eae1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #a63232;
+            border-radius: 4px;
+        }
+
+        /* Ajuste de responsividade */
+        @media (max-width: 768px) {
+            .overview-grid {
+                flex-direction: column;
+            }
+            .info-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Lateral -->
+    <nav class="sidebar">
+        <div class="logo-container">
+            <div class="logo-placeholder"></div>
+            <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active"><a href="#">Dashboard</a></li>
+            <li class="nav-item"><a href="#">Diagnóstico</a></li>
+            <li class="nav-item"><a href="#">Trilhas</a></li>
+            <li class="nav-item"><a href="#">Mentorias</a></li>
+            <li class="nav-item"><a href="#">Painel da empreendedora</a></li>
+            <li class="nav-item"><a href="#">Marketplace</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="header-top">
+            <span class="breadcrumb">Painel Inicial</span>
+            <div class="user-profile">
+                <span style="font-weight: 500; font-size: 14px;">Amanda Silva</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <!-- Introdução -->
+        <div class="welcome-section">
+            <h1 class="welcome-title">Olá, Amanda!</h1>
+            <p class="welcome-subtitle">Acompanhe o desenvolvimento e os próximos passos do seu negócio local.</p>
+        </div>
+
+        <!-- Bloco de Destaques Rápidos -->
+        <section class="overview-grid">
+            
+            <!-- Card 1 -->
+            <div class="info-card">
+                <div>
+                    <div class="card-label">Estágio Atual</div>
+                    <div class="card-value">Fase de Ideia</div>
+                </div>
+                <div class="card-subtext">Trilha Inicial Ativa</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="info-card">
+                <div>
+                    <div class="card-label">Progresso da Trilha</div>
+                    <div class="card-value">45% Concluído</div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="info-card">
+                <div>
+                    <div class="card-label">Próximo Encontro</div>
+                    <div class="card-value">Amanhã, 15h</div>
+                </div>
+                <div class="card-subtext">Mentoria de Finanças</div>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

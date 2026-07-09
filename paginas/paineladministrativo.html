@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empreenda+ Elas - Painel Administrativo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcfbfa;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Menu Lateral (Sidebar) */
+        .sidebar {
+            width: 260px;
+            background-color: #ffffff;
+            border-right: 1px solid #e8e2da;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: #3d3d3d;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 15px;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item a {
+            display: block;
+            padding: 11px 14px;
+            color: #615e5a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover {
+            background-color: #f7f3ed;
+            color: #a63232;
+        }
+
+        .nav-item.active a {
+            background-color: #f7eded;
+            color: #a63232;
+            font-weight: 600;
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #615e5a;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            background-color: #7b5294; /* Tom roxo do admin */
+            border-radius: 50%;
+        }
+
+        /* Cabeçalho da Página */
+        .page-intro {
+            margin-bottom: 28px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            color: #1a1a1a;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .page-subtitle {
+            color: #7a756e;
+            font-size: 14px;
+        }
+
+        /* Grid de Métricas com Bordas Coloridas */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            border: 1px solid #e8e2da;
+            border-radius: 8px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Detalhe superior colorido nos cards */
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .card-red::before { background-color: #a63232; }
+        .card-purple::before { background-color: #7b5294; }
+        .card-green::before { background-color: #2e7d32; }
+
+        .metric-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #7a756e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .metric-status {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-red { color: #a63232; }
+        .status-green { color: #2e7d32; }
+        .status-gray { color: #8a857e; }
+
+        /* Seção da Tabela de Aprovações */
+        .approval-section {
+            background: #ffffff;
+            border: 1px solid #e8e2da;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .admin-table th {
+            font-size: 12px;
+            font-weight: 600;
+            color: #7a756e;
+            text-transform: uppercase;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #e8e2da;
+        }
+
+        .admin-table td {
+            font-size: 14px;
+            color: #2b2b2b;
+            padding: 16px 0;
+            border-bottom: 1px solid #f5f2ee;
+        }
+
+        /* Badges de Status */
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-completed {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-analysis {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        /* Botões de Ação */
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .btn-approve {
+            background-color: #a63232;
+            color: white;
+            border: none;
+        }
+
+        .btn-approve:hover {
+            background-color: #8c2727;
+        }
+
+        .btn-review {
+            background-color: transparent;
+            border: 1px solid #a63232;
+            color: #a63232;
+        }
+
+        .btn-review:hover {
+            background-color: #f7eded;
+        }
+
+        @media (max-width: 1024px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Lateral -->
+    <nav class="sidebar">
+        <div class="logo-container">
+            <div class="logo-placeholder"></div>
+            <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#">Voltar para página anterior</a></li>
+            <li class="nav-item active"><a href="#">Visão Geral</a></li>
+            <li class="nav-item"><a href="#">Validar Projetos</a></li>
+            <li class="nav-item"><a href="#">Parceiros / SEBRAE</a></li>
+            <li class="nav-item"><a href="#">Relatórios Financeiros</a></li>
+            <li class="nav-item"><a href="#">Feedback das Usuárias</a></li>
+            <li class="nav-item"><a href="#">Usuárias cadastradas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="header-top">
+            <span class="breadcrumb">Área de Monitoramento Geral (Admin)</span>
+            <div class="user-profile">
+                <span style="font-weight: 500; font-size: 14px;">Administrador(a)</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="page-intro">
+            <h1 class="page-title">Métricas Gerais da Plataforma</h1>
+            <p class="page-subtitle">Controle de impacto social, acompanhamento de acessos das trilhas e aprovação de novas lojas.</p>
+        </div>
+
+        <!-- Grid de Métricas -->
+        <section class="metrics-grid">
+            <div class="metric-card card-red">
+                <div class="metric-label">Total de Mulheres Inscritas</div>
+                <div class="metric-value">1.405 Empreendedoras</div>
+                <div class="metric-status status-green">+54 novas esta semana</div>
+            </div>
+
+            <div class="metric-card card-purple">
+                <div class="metric-label">Trilhas Concluídas</div>
+                <div class="metric-value">312 Certificados</div>
+                <div class="metric-status status-green">88% de engajamento ativo</div>
+            </div>
+
+            <div class="metric-card card-green">
+                <div class="metric-label">Microcréditos Solicitados</div>
+                <div class="metric-value">42 Encaminhamentos</div>
+                <div class="metric-status status-gray">Conexão direta com bancos parceiros</div>
+            </div>
+        </section>
+
+        <!-- Tabela de Solicitações Pendentes -->
+        <section class="approval-section">
+            <h2 class="section-title">Aprovação Pendente de Novas Lojas no Marketplace</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Empreendedora</th>
+                        <th>Nome da Loja Solicitada</th>
+                        <th>Polo / Cidade</th>
+                        <th>Status Diagnóstico</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: 500;">Francisca Iracema</td>
+                        <td>Doces Tradicionais Iracema</td>
+                        <td>Lavras da Mangabeira</td>
+                        <td><span class="badge badge-completed">Trilha Inicial Concluída</span></td>
+                        <td><button class="btn btn-approve">Aprovar Catálogo</button></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500;">Juliana Maria das Dores</td>
+                        <td>Artesanatos em Linha e Fuxico</td>
+                        <td>Lavras da Mangabeira</td>
+                        <td><span class="badge badge-analysis">Em Análise Técnica</span></td>
+                        <td><button class="btn btn-review">Revisar Perfil</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>
