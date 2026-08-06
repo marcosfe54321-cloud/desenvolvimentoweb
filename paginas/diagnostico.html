@@ -17,6 +17,7 @@
             color: #333;
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Menu Lateral (Sidebar) */
@@ -87,6 +88,7 @@
             max-width: 1200px;
             display: flex;
             flex-direction: column;
+            min-width: 0;
         }
 
         .header-top {
@@ -248,11 +250,57 @@
 
         /* Ajuste de responsividade */
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e8e2da;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                flex: 1 1 150px;
+            }
+
+            .main-content {
+                padding: 24px 16px;
+                max-width: 100%;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 24px;
+            }
+
             .quiz-container {
                 padding: 24px;
             }
+
             .quiz-question {
                 font-size: 20px;
+            }
+
+            .option-card {
+                padding: 14px;
+            }
+
+            .quiz-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .btn-next {
+                width: 100%;
             }
         }
     </style>
@@ -265,12 +313,12 @@
             <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="#">Dashboard</a></li>
-            <li class="nav-item active"><a href="#">Diagnóstico</a></li>
-            <li class="nav-item"><a href="#">Trilhas</a></li>
-            <li class="nav-item"><a href="#">Mentorias</a></li>
-            <li class="nav-item"><a href="#">Painel da empreendedora</a></li>
-            <li class="nav-item"><a href="#">Marketplace</a></li>
+            <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item active"><a href="diagnostico.html">Diagnóstico</a></li>
+            <li class="nav-item"><a href="trilhas.html">Trilhas</a></li>
+            <li class="nav-item"><a href="mentorias.html">Mentorias</a></li>
+            <li class="nav-item"><a href="painelempreendedora.html">Painel da empreendedora</a></li>
+            <li class="nav-item"><a href="marketplace.html">Marketplace</a></li>
         </ul>
     </nav>
 

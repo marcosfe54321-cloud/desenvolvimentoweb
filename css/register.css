@@ -114,6 +114,7 @@ body {
     cursor: pointer;
     text-align: center;
     position: relative;
+    text-decoration: none;
 }
 
 .tab-btn.active {

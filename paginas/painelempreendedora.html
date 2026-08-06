@@ -17,6 +17,7 @@
             color: #333;
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Menu Lateral (Sidebar) */
@@ -88,6 +89,7 @@
             flex: 1;
             padding: 40px;
             max-width: 1200px;
+            min-width: 0;
         }
 
         .header-top {
@@ -206,6 +208,7 @@
             border: 1px solid #e8e2da;
             border-radius: 8px;
             padding: 24px;
+            overflow-x: auto;
         }
 
         .section-title {
@@ -257,8 +260,58 @@
 
         /* Responsividade Básica */
         @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e8e2da;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                flex: 1 1 160px;
+            }
+
+            .main-content {
+                max-width: 100%;
+                padding: 24px 16px;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .page-intro {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn-add-product {
+                width: 100%;
+                text-align: center;
+            }
+
             .metrics-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .orders-table {
+                min-width: 680px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -272,10 +325,10 @@
             <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="#">Dashboard</a></li>
-            <li class="nav-item active"><a href="#">Minha Loja / Vendas</a></li>
-            <li class="nav-item"><a href="#">Trilhas</a></li>
-            <li class="nav-item"><a href="#">Painel administrativo</a></li>
+            <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item active"><a href="painelempreendedora.html">Minha Loja / Vendas</a></li>
+            <li class="nav-item"><a href="trilhas.html">Trilhas</a></li>
+            <li class="nav-item"><a href="paineladministrativo.html">Painel administrativo</a></li>
         </ul>
     </nav>
 

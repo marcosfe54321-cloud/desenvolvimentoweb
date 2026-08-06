@@ -17,6 +17,7 @@
             color: #333;
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Menu Lateral (Sidebar) */
@@ -86,6 +87,7 @@
             flex: 1;
             padding: 40px;
             max-width: 1200px;
+            min-width: 0;
         }
 
         .header-top {
@@ -192,6 +194,7 @@
             border: 1px solid #e8e2da;
             border-radius: 8px;
             padding: 24px;
+            overflow-x: auto;
         }
 
         .section-title {
@@ -276,8 +279,42 @@
         }
 
         @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e8e2da;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                flex: 1 1 160px;
+            }
+
+            .main-content {
+                max-width: 100%;
+                padding: 24px 16px;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
             .metrics-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .admin-table {
+                min-width: 720px;
             }
         }
     </style>
@@ -291,13 +328,13 @@
             <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="#">Voltar para página anterior</a></li>
-            <li class="nav-item active"><a href="#">Visão Geral</a></li>
-            <li class="nav-item"><a href="#">Validar Projetos</a></li>
-            <li class="nav-item"><a href="#">Parceiros / SEBRAE</a></li>
-            <li class="nav-item"><a href="#">Relatórios Financeiros</a></li>
-            <li class="nav-item"><a href="#">Feedback das Usuárias</a></li>
-            <li class="nav-item"><a href="#">Usuárias cadastradas</a></li>
+            <li class="nav-item"><a href="dashboard.html">Voltar para dashboard</a></li>
+            <li class="nav-item active"><a href="paineladministrativo.html">Visão Geral</a></li>
+            <li class="nav-item"><a href="marketplace.html">Validar Projetos</a></li>
+            <li class="nav-item"><a href="mentorias.html">Parceiros / SEBRAE</a></li>
+            <li class="nav-item"><a href="painelempreendedora.html">Relatórios Financeiros</a></li>
+            <li class="nav-item"><a href="diagnostico.html">Feedback das Usuárias</a></li>
+            <li class="nav-item"><a href="trilhas.html">Usuárias cadastradas</a></li>
         </ul>
     </nav>
 

@@ -127,6 +127,7 @@
             cursor: pointer;
             text-align: center;
             position: relative;
+            text-decoration: none;
         }
 
         .tab-btn.active {
@@ -321,6 +322,10 @@
                 flex-wrap: wrap;
                 gap: 16px;
             }
+
+            .social-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -344,8 +349,8 @@
                 <p class="welcome-subtitle">Acesse sua conta para continuar.</p>
 
                 <div class="tabs-container">
-                    <button class="tab-btn active">Entrar</button>
-                    <button class="tab-btn">Cadastrar</button>
+                    <a class="tab-btn active" href="login.html">Entrar</a>
+                    <a class="tab-btn" href="register.html">Cadastrar</a>
                 </div>
 
                 <form>
@@ -370,7 +375,7 @@
 
                     <!-- Esqueci minha senha -->
                     <div class="forgot-password-wrapper">
-                        <a href="#" class="forgot-password">Esqueci minha senha</a>
+                        <a href="register.html" class="forgot-password">Esqueci minha senha</a>
                     </div>
 
                     <!-- Botão Entrar -->
@@ -396,10 +401,10 @@
     <!-- Rodapé Unificado -->
     <footer class="footer-bar">
         <div class="footer-links">
-            <a href="#">Sobre</a>
-            <a href="#">Políticas de Privacidade</a>
-            <a href="#">Termos e serviços</a>
-            <a href="#">Contato e Suporte</a>
+            <a href="../index.html">Sobre</a>
+            <a href="../index.html">Políticas de Privacidade</a>
+            <a href="../index.html">Termos e serviços</a>
+            <a href="../index.html">Contato e Suporte</a>
         </div>
         <div>
             &copy; 2026 Empreenda Mais Elas

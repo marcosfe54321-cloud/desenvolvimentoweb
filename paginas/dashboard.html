@@ -17,6 +17,7 @@
             color: #333;
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Menu Lateral (Sidebar) */
@@ -85,6 +86,7 @@
             flex: 1;
             padding: 40px;
             max-width: 1200px;
+            min-width: 0;
         }
 
         .header-top {
@@ -193,11 +195,47 @@
 
         /* Ajuste de responsividade */
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e8e2da;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                flex: 1 1 150px;
+            }
+
+            .main-content {
+                padding: 24px 16px;
+                max-width: 100%;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 24px;
+            }
+
             .overview-grid {
                 flex-direction: column;
             }
+
             .info-card {
                 width: 100%;
+            }
+
+            .welcome-title {
+                font-size: 26px;
             }
         }
     </style>
@@ -211,12 +249,12 @@
             <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active"><a href="#">Dashboard</a></li>
-            <li class="nav-item"><a href="#">Diagnóstico</a></li>
-            <li class="nav-item"><a href="#">Trilhas</a></li>
-            <li class="nav-item"><a href="#">Mentorias</a></li>
-            <li class="nav-item"><a href="#">Painel da empreendedora</a></li>
-            <li class="nav-item"><a href="#">Marketplace</a></li>
+            <li class="nav-item active"><a href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a href="diagnostico.html">Diagnóstico</a></li>
+            <li class="nav-item"><a href="trilhas.html">Trilhas</a></li>
+            <li class="nav-item"><a href="mentorias.html">Mentorias</a></li>
+            <li class="nav-item"><a href="painelempreendedora.html">Painel da empreendedora</a></li>
+            <li class="nav-item"><a href="marketplace.html">Marketplace</a></li>
         </ul>
     </nav>
 
