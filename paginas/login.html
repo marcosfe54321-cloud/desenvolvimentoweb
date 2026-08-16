@@ -198,11 +198,50 @@
             margin-bottom: 24px;
         }
 
+        .remember-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: -4px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .remember-line label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #544d47;
+        }
+
         .forgot-password {
             font-size: 12px;
             color: #a63232;
             text-decoration: none;
             font-weight: 600;
+        }
+
+        .form-message {
+            display: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .form-message.is-error {
+            display: block;
+            background: #fdeeee;
+            color: #8a2828;
+            border: 1px solid #f2c8c8;
+        }
+
+        .form-message.is-success {
+            display: block;
+            background: #edf8ef;
+            color: #27613a;
+            border: 1px solid #bfddc6;
         }
 
         /* Botão de Submissão */
@@ -353,29 +392,37 @@
                     <a class="tab-btn" href="register.html">Cadastrar</a>
                 </div>
 
-                <form>
+                <div id="login-message" class="form-message" role="status" aria-live="polite"></div>
+
+                <form id="login-form" novalidate>
                     <!-- Campo E-mail -->
                     <div class="input-group">
-                        <label class="input-label">E-mail</label>
+                        <label class="input-label" for="login-email">E-mail</label>
                         <div class="input-field-wrapper">
                             <span class="input-icon">&#9993;</span>
-                            <input type="email" class="input-field" placeholder="seu@email.com" required>
+                            <input id="login-email" name="email" type="email" class="input-field" placeholder="seu@email.com" required>
                         </div>
                     </div>
 
                     <!-- Campo Senha -->
                     <div class="input-group">
-                        <label class="input-label">Senha</label>
+                        <label class="input-label" for="login-password">Senha</label>
                         <div class="input-field-wrapper">
                             <span class="input-icon">&#128274;</span>
-                            <input type="password" class="input-field" value="12345678" required>
-                            <span class="toggle-password">&#128065;</span>
+                            <input id="login-password" name="password" type="password" class="input-field" placeholder="Digite sua senha" required>
+                            <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">&#128065;</button>
                         </div>
                     </div>
 
-                    <!-- Esqueci minha senha -->
-                    <div class="forgot-password-wrapper">
-                        <a href="register.html" class="forgot-password">Esqueci minha senha</a>
+                    <div class="remember-line">
+                        <label for="remember-session">
+                            <input id="remember-session" name="remember" type="checkbox">
+                            <span>Lembrar de mim neste dispositivo</span>
+                        </label>
+
+                        <div class="forgot-password-wrapper">
+                            <a href="register.html" class="forgot-password">Esqueci minha senha</a>
+                        </div>
                     </div>
 
                     <!-- Botão Entrar -->
@@ -410,6 +457,8 @@
             &copy; 2026 Empreenda Mais Elas
         </div>
     </footer>
+
+    <script src="../js/auth.js"></script>
 
 </body>
 </html>

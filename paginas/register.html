@@ -30,40 +30,98 @@
                     <a class="tab-btn active" href="register.html">Cadastrar</a>
                 </div>
 
-                <form>
-                    <!-- Campo Nome -->
+                <div id="register-message" class="form-message" role="status" aria-live="polite"></div>
+
+                <form id="register-form" novalidate>
+                    <!-- Campo Nome Completo -->
                     <div class="input-group">
+                        <label class="input-label" for="register-name">Nome completo</label>
                         <div class="input-field-wrapper">
-                            <input type="text" class="input-field" placeholder="seu nome" required>
+                            <input id="register-name" name="name" type="text" class="input-field" placeholder="Seu nome completo" required>
                         </div>
                     </div>
 
-                    <!-- Campo E-mail -->
-                    <div class="input-group">
-                        <div class="input-field-wrapper">
-                            <input type="email" class="input-field" placeholder="seu email" required>
+                    <div class="input-row">
+                        <!-- Campo E-mail -->
+                        <div class="input-group">
+                            <label class="input-label" for="register-email">E-mail</label>
+                            <div class="input-field-wrapper">
+                                <input id="register-email" name="email" type="email" class="input-field" placeholder="seu@email.com" required>
+                            </div>
                         </div>
+
+                        <!-- Campo Telefone -->
+                        <div class="input-group">
+                            <label class="input-label" for="register-phone">Telefone</label>
+                            <div class="input-field-wrapper">
+                                <input id="register-phone" name="phone" type="tel" class="input-field" placeholder="(88) 99999-9999" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <!-- Cidade -->
+                        <div class="input-group">
+                            <label class="input-label" for="register-city">Cidade</label>
+                            <div class="input-field-wrapper">
+                                <input id="register-city" name="city" type="text" class="input-field" placeholder="Lavras da Mangabeira" required>
+                            </div>
+                        </div>
+
+                        <!-- Tipo de Negócio -->
+                        <div class="input-group">
+                            <label class="input-label" for="register-business">Tipo de negócio</label>
+                            <div class="input-field-wrapper">
+                                <select id="register-business" name="business" class="input-field input-select" required>
+                                    <option value="" selected disabled>Selecione</option>
+                                    <option value="alimentacao">Alimentação</option>
+                                    <option value="artesanato">Artesanato</option>
+                                    <option value="moda">Moda e beleza</option>
+                                    <option value="servicos">Serviços</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label" for="register-stage">Momento do negócio</label>
+                        <div class="input-field-wrapper">
+                            <select id="register-stage" name="stage" class="input-field input-select" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="inicial">Estou começando agora</option>
+                                <option value="acelerada">Já vendo e quero acelerar</option>
+                            </select>
+                        </div>
+                        <p class="helper-text">Isso ajuda a indicar conteúdos e trilhas mais adequadas.</p>
                     </div>
 
                     <!-- Campo Senha -->
                     <div class="input-group has-icon">
+                        <label class="input-label" for="register-password">Senha</label>
                         <div class="input-field-wrapper">
                             <span class="input-icon">&#128274;</span>
-                            <input type="password" class="input-field" placeholder="sua senha" required>
-                            <span class="toggle-password">&#128065;</span>
+                            <input id="register-password" name="password" type="password" class="input-field" placeholder="Crie uma senha com no mínimo 6 caracteres" required>
+                            <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">&#128065;</button>
                         </div>
                     </div>
 
                     <!-- Campo Confirmar Senha -->
                     <div class="input-group has-icon">
+                        <label class="input-label" for="register-confirm-password">Confirmar senha</label>
                         <div class="input-field-wrapper">
                             <span class="input-icon">&#128274;</span>
-                            <input type="password" class="input-field" placeholder="confirmar sua senha" required>
-                            <span class="toggle-password">&#128065;</span>
+                            <input id="register-confirm-password" name="confirmPassword" type="password" class="input-field" placeholder="Repita a senha" required>
+                            <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">&#128065;</button>
                         </div>
                     </div>
 
-                    <!-- Botão Entrar (Mantido como "Entrar" conforme o botão do layout do Figma) -->
+                    <label class="checkbox-line" for="register-terms">
+                        <input id="register-terms" name="terms" type="checkbox" required>
+                        <span>Li e concordo com os <a href="../index.html">termos</a> e política de privacidade.</span>
+                    </label>
+
+                    <!-- Botão de cadastro -->
                     <button type="submit" class="btn-submit">Cadastrar</button>
 
                     <!-- Divisor -->
@@ -78,6 +136,8 @@
                             <span>f</span> Facebook
                         </button>
                     </div>
+
+                    <p class="form-extra-link">Já tem conta? <a href="login.html">Entrar agora</a></p>
                 </form>
             </div>
         </div>
@@ -95,6 +155,8 @@
             &copy; 2026 Empreenda Mais Elas
         </div>
     </footer>
+
+    <script src="../js/auth.js"></script>
 
 </body>
 </html>

@@ -11,8 +11,11 @@
     <!-- CABEÇALHO -->
     <header>
         <div class="container-header">
-            <div class="logo">
-                <h1>Empreenda Mais Elas</h1>
+            <div class="header-topo">
+                <div class="logo">
+                    <h1>Empreenda Mais Elas</h1>
+                </div>
+                <button class="theme-toggle" type="button" aria-label="Alternar tema">🌙 Tema escuro</button>
             </div>
             <p class="tagline">Transformando ideias em negócios de sucesso</p>
         </div>
@@ -105,6 +108,60 @@
             <p>Crie sua conta gratuitamente e acesse todas as nossas ferramentas e recursos.</p>
             <a href="paginas/register.html" class="botao-principal">Criar Conta</a>
             <a href="paginas/login.html" class="botao-secundario">Já tenho conta</a>
+        </section>
+
+        <!-- FORMULÁRIO DE CONTATO -->
+        <section class="secao-contato" aria-labelledby="titulo-contato">
+            <div class="secao-contato-header">
+                <h2 id="titulo-contato">Fale com a nossa equipe</h2>
+                <p>Quer saber mais sobre mentoria, cursos ou como começar seu negócio? Preencha o formulário abaixo.</p>
+            </div>
+
+            <form id="formulario-contato" novalidate>
+                <div class="campo-duplo">
+                    <div class="campo">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                        <small class="mensagem-erro" data-error-for="nome"></small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                        <small class="mensagem-erro" data-error-for="email"></small>
+                    </div>
+                </div>
+
+                <div class="campo-duplo">
+                    <div class="campo">
+                        <label for="interesse">Área de interesse</label>
+                        <select id="interesse" name="interesse" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="mentoria">Mentoria</option>
+                            <option value="trilhas">Trilhas de aprendizagem</option>
+                            <option value="diagnostico">Diagnóstico de negócios</option>
+                            <option value="marketplace">Marketplace</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <small class="mensagem-erro" data-error-for="interesse"></small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                        <small class="mensagem-erro" data-error-for="telefone"></small>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte um pouco sobre sua necessidade" required></textarea>
+                    <small class="mensagem-erro" data-error-for="mensagem"></small>
+                </div>
+
+                <button type="submit" class="botao-principal botao-envio">Enviar mensagem</button>
+                <p id="statusMensagem" class="status-mensagem" aria-live="polite"></p>
+            </form>
         </section>
     </main>
 
