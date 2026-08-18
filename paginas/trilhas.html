@@ -1,80 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empreenda+ Elas - Trilhas de Aprendizagem</title>
-    <link rel="stylesheet" href="../css/trilhas.css">
-</head>
-<body>
+    <meta name="description" content="Trilhas de aprendizagem em mentalidade empreendedora, financas e marketing para empreendedoras.">
+    <title>Trilhas de Aprendizagem - Empreenda Mais Elas</title>
 
-    <nav class="sidebar">
-        <div class="logo-container">
-            <div class="logo-icon"></div>
-            <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
-            <li class="nav-item"><a href="diagnostico.html">Diagnóstico</a></li>
-            <li class="nav-item active"><a href="trilhas.html">Trilhas</a></li>
-            <li class="nav-item"><a href="mentorias.html">Mentorias</a></li>
-            <li class="nav-item"><a href="paineladministrativo.html">Painel Administrativo</a></li>
-            <li class="nav-item"><a href="marketplace.html">Marketplace</a></li>
+    <link rel="icon" href="../img/logo-simbolo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/painel.css">
+
+    <!-- Sem "defer": o tema precisa ser aplicado antes da pagina pintar -->
+    <script src="../js/tema.js"></script>
+</head>
+
+<body class="layout-painel">
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ================= MENU LATERAL ================= -->
+    <nav class="menu-lateral" aria-label="Navegação da plataforma">
+        <a class="logo-marca" href="../index.html">
+            <img src="../img/logo.svg" alt="Empreenda Mais Elas - página inicial">
+        </a>
+
+        <ul class="menu-itens">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="diagnostico.html">Diagnóstico</a></li>
+                <li><a href="trilhas.html" aria-current="page">Trilhas</a></li>
+                <li><a href="mentorias.html">Mentorias</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="painelempreendedora.html">Painel da empreendedora</a></li>
+                <li><a href="paineladministrativo.html">Painel administrativo</a></li>
         </ul>
+
+        <div class="menu-rodape">
+            <a href="../index.html">&larr; Início do site</a>
+            <a href="login.html" data-acao="sair">Sair da conta</a>
+        </div>
     </nav>
 
-    <main class="main-content">
-        <div class="header-top">
-            <h1 class="page-title">Trilhas de Aprendizagem</h1>
-            <div class="user-profile">
-                <span class="username" style="font-weight: 500;">Olá, Amanda</span>
-                <div class="avatar"></div>
+    <div class="area-conteudo">
+        <!-- ================= CABEÇALHO ================= -->
+        <header class="topo-painel">
+            <p class="trilha-navegacao">Aprendizagem</p>
+
+            <div class="topo-acoes">
+                <button type="button" class="botao-tema" aria-pressed="false"
+                    aria-label="Mudar para o tema escuro">
+                    <span class="icone-tema" aria-hidden="true">🌙</span>
+                    <span class="texto-tema">Tema escuro</span>
+                </button>
+
+                <p class="perfil-usuaria">
+                    <img src="../img/avatar-amanda.svg" alt="Foto de perfil de Amanda Silva">
+                    <span class="nome-usuaria" data-nome-usuaria="">Amanda Silva</span>
+                </p>
             </div>
-        </div>
+        </header>
 
-        <div class="welcome-section">
-            <h2 class="welcome-title">Sua Trilha de Conhecimento</h2>
-            <p class="welcome-desc">Desenvolva as competências certas para alavancar o seu negócio local através dos nossos módulos estruturados.</p>
-        </div>
+        <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+        <main class="conteudo-painel" id="conteudo">
+            <section class="intro-pagina" aria-labelledby="titulo-trilhas">
+                <h1 class="titulo-pagina" id="titulo-trilhas">Trilhas de Aprendizagem</h1>
+                <p class="descricao-pagina">Desenvolva as competências certas para
+                    alavancar o seu negócio local através dos nossos módulos estruturados.</p>
+            </section>
 
-        <h3 class="tracks-section-title">Trilhas Disponíveis</h3>
+            <section aria-labelledby="titulo-disponiveis">
+                <h2 class="titulo-secao" id="titulo-disponiveis">Trilhas disponíveis</h2>
 
-        <div class="cards-grid">
-            <div class="card">
-                <div>
-                    <div class="card-tag">Em Andamento</div>
-                    <h4 class="card-title">Mentalidade Empreendedora e Gestão de Tempo</h4>
-                    <p class="card-desc">Aprenda a organizar a sua rotina, definir metas claras para o seu negócio e desenvolver a resiliência necessária para o ecossistema empreendedor.</p>
-                </div>
-                <div class="card-footer">
-                    <div class="progress-container">
-                        <div class="progress-text">Progresso: 45%</div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-bar-fill" style="width: 45%;"></div>
+                <div class="grade-cartoes">
+                    <article class="cartao cartao-trilha">
+                        <div>
+                            <span class="etiqueta etiqueta-info">Em andamento</span>
+                            <h3>Mentalidade Empreendedora e Gestão de Tempo</h3>
+                            <p>Aprenda a organizar a sua rotina, definir metas claras para
+                                o seu negócio e desenvolver a resiliência necessária para
+                                o ecossistema empreendedor.</p>
                         </div>
-                    </div>
-                    <a href="mentorias.html" class="btn-action">Continuar</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="card-tag" style="background-color: #f0f0f0; color: #666;">Não Iniciado</div>
-                    <h4 class="card-title">Finanças Básicas e Precificação de Produtos</h4>
-                    <p class="card-desc">Domine o fluxo de caixa, separe as contas pessoais das empresariais e aprenda a calcular o preço de venda ideal para os seus produtos ou serviços.</p>
-                </div>
-                <div class="card-footer">
-                    <div class="progress-container">
-                        <div class="progress-text">Progresso: 0%</div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-bar-fill" style="width: 0%;"></div>
+                        <div class="rodape-cartao">
+                            <div class="progresso">
+                                <p class="progresso-texto">Progresso: 45%</p>
+                                <div class="progresso-trilho">
+                                    <div class="progresso-preenchimento" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <a class="botao-principal" href="mentorias.html">Continuar</a>
                         </div>
-                    </div>
-                    <a href="diagnostico.html" class="btn-action btn-secondary">Iniciar Trilha</a>
+                    </article>
+
+                    <article class="cartao cartao-trilha">
+                        <div>
+                            <span class="etiqueta etiqueta-neutra">Não iniciado</span>
+                            <h3>Finanças Básicas e Precificação de Produtos</h3>
+                            <p>Domine o fluxo de caixa, separe as contas pessoais das
+                                empresariais e aprenda a calcular o preço de venda ideal
+                                para os seus produtos ou serviços.</p>
+                        </div>
+                        <div class="rodape-cartao">
+                            <div class="progresso">
+                                <p class="progresso-texto">Progresso: 0%</p>
+                                <div class="progresso-trilho">
+                                    <div class="progresso-preenchimento" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <a class="botao-secundario" href="diagnostico.html">Iniciar trilha</a>
+                        </div>
+                    </article>
+
+                    <article class="cartao cartao-trilha">
+                        <div>
+                            <span class="etiqueta etiqueta-neutra">Não iniciado</span>
+                            <h3>Marketing Digital para Negócios Locais</h3>
+                            <p>Monte uma rotina simples de divulgação nas redes sociais,
+                                fotografe seus produtos com o celular e aprenda a conversar
+                                com quem compra de você.</p>
+                        </div>
+                        <div class="rodape-cartao">
+                            <div class="progresso">
+                                <p class="progresso-texto">Progresso: 0%</p>
+                                <div class="progresso-trilho">
+                                    <div class="progresso-preenchimento" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <a class="botao-secundario" href="marketplace.html">Iniciar trilha</a>
+                        </div>
+                    </article>
                 </div>
-            </div>
-        </div>
-    </main>
+            </section>
+        </main>
+
+        <!-- ================= RODAPÉ ================= -->
+        <footer class="rodape-painel">
+            <p>&copy; 2026 Empreenda Mais Elas</p>
+            <ul>
+                <li><a href="../index.html">Início do site</a></li>
+                <li><a href="../index.html#faq">Perguntas frequentes</a></li>
+                <li><a href="../index.html#contato">Fale conosco</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="../js/auth.js" defer></script>
 
 </body>
+
 </html>
