@@ -1,414 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empreenda+ Elas - Painel Comercial da Loja</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <meta name="description" content="Painel comercial da loja: vendas do mes, produtos publicados e pedidos em aberto.">
+    <title>Painel da Empreendedora - Empreenda Mais Elas</title>
 
-        body {
-            background-color: #fcfbfa;
-            color: #333;
-            display: flex;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+    <link rel="icon" href="../img/logo-simbolo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/painel.css">
 
-        /* Menu Lateral (Sidebar) */
-        .sidebar {
-            width: 260px;
-            background-color: #ffffff;
-            border-right: 1px solid #e8e2da;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-
-        .logo-placeholder {
-            width: 40px;
-            height: 40px;
-            background-color: #3d3d3d;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-text {
-            font-weight: bold;
-            font-size: 15px;
-            color: #1a1a1a;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .nav-item a {
-            display: block;
-            padding: 12px 16px;
-            color: #615e5a;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .nav-item a:hover {
-            background-color: #f7f3ed;
-            color: #a63232;
-        }
-
-        .nav-item.active a {
-            background-color: #f7eded;
-            color: #a63232;
-            font-weight: 600;
-        }
-
-        /* Conteúdo Principal */
-        .main-content {
-            flex: 1;
-            padding: 40px;
-            max-width: 1200px;
-            min-width: 0;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 36px;
-        }
-
-        .breadcrumb {
-            font-size: 14px;
-            color: #615e5a;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar {
-            width: 36px;
-            height: 36px;
-            background-color: #e5dcd3;
-            border-radius: 50%;
-        }
-
-        /* Título e Ações da Loja */
-        .page-intro {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 28px;
-        }
-
-        .page-title {
-            font-size: 28px;
-            color: #1a1a1a;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .page-subtitle {
-            color: #7a756e;
-            font-size: 14px;
-        }
-
-        .btn-add-product {
-            background-color: #a63232;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-            transition: background-color 0.2s;
-        }
-
-        .btn-add-product:hover {
-            background-color: #8c2727;
-        }
-
-        /* Grid de Indicadores/Cards */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .metric-card {
-            background: #ffffff;
-            border: 1px solid #e8e2da;
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .metric-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: #7a756e;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-        }
-
-        .metric-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-
-        .metric-status {
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .status-positive {
-            color: #2e7d32;
-        }
-
-        .status-pending {
-            color: #7b1fa2;
-        }
-
-        .status-neutral {
-            color: #8a857e;
-        }
-
-        /* Seção da Tabela de Pedidos */
-        .orders-section {
-            background: #ffffff;
-            border: 1px solid #e8e2da;
-            border-radius: 8px;
-            padding: 24px;
-            overflow-x: auto;
-        }
-
-        .section-title {
-            font-size: 20px;
-            color: #1a1a1a;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .orders-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        .orders-table th {
-            font-size: 12px;
-            font-weight: 600;
-            color: #7a756e;
-            text-transform: uppercase;
-            padding-bottom: 14px;
-            border-bottom: 1px solid #e8e2da;
-        }
-
-        .orders-table td {
-            font-size: 14px;
-            color: #2b2b2b;
-            padding: 16px 0;
-            border-bottom: 1px solid #f5f2ee;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge-waiting {
-            background-color: #f7e6d9;
-            color: #9c5b23;
-        }
-
-        .badge-success {
-            background-color: #e9f0e1;
-            color: #4d7a3f;
-        }
-
-        /* Responsividade Básica */
-        @media (max-width: 1024px) {
-            body {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #e8e2da;
-            }
-
-            .nav-menu {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-
-            .nav-item {
-                flex: 1 1 160px;
-            }
-
-            .main-content {
-                max-width: 100%;
-                padding: 24px 16px;
-            }
-
-            .header-top {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .page-intro {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .btn-add-product {
-                width: 100%;
-                text-align: center;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .orders-table {
-                min-width: 680px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <!-- Sem "defer": o tema precisa ser aplicado antes da pagina pintar -->
+    <script src="../js/tema.js"></script>
 </head>
-<body>
 
-    <!-- Menu Lateral -->
-    <nav class="sidebar">
-        <div class="logo-container">
-            <div class="logo-placeholder"></div>
-            <span class="logo-text">EMPREENDA<br>MAIS ELAS</span>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
-            <li class="nav-item active"><a href="painelempreendedora.html">Minha Loja / Vendas</a></li>
-            <li class="nav-item"><a href="trilhas.html">Trilhas</a></li>
-            <li class="nav-item"><a href="paineladministrativo.html">Painel administrativo</a></li>
+<body class="layout-painel">
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ================= MENU LATERAL ================= -->
+    <nav class="menu-lateral" aria-label="Navegação da plataforma">
+        <a class="logo-marca" href="../index.html">
+            <img src="../img/logo.svg" alt="Empreenda Mais Elas - página inicial">
+        </a>
+
+        <ul class="menu-itens">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="diagnostico.html">Diagnóstico</a></li>
+                <li><a href="trilhas.html">Trilhas</a></li>
+                <li><a href="mentorias.html">Mentorias</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="painelempreendedora.html" aria-current="page">Painel da empreendedora</a></li>
+                <li><a href="paineladministrativo.html">Painel administrativo</a></li>
         </ul>
+
+        <div class="menu-rodape">
+            <a href="../index.html">&larr; Início do site</a>
+            <a href="login.html" data-acao="sair">Sair da conta</a>
+        </div>
     </nav>
 
-    <!-- Conteúdo Principal -->
-    <main class="main-content">
-        <div class="header-top">
-            <span class="breadcrumb">Gerenciamento do Meu Negócio</span>
-            <div class="user-profile">
-                <span style="font-weight: 500; font-size: 14px;">Amanda Silva</span>
-                <div class="avatar"></div>
-            </div>
-        </div>
+    <div class="area-conteudo">
+        <!-- ================= CABEÇALHO ================= -->
+        <header class="topo-painel">
+            <p class="trilha-navegacao">Minha loja</p>
 
-        <div class="page-intro">
-            <div>
-                <h1 class="page-title">Painel Comercial da Loja</h1>
-                <p class="page-subtitle">Controle seus produtos, gerencie pedidos e acompanhe seu faturamento.</p>
-            </div>
-            <button class="btn-add-product">+ Cadastrar Novo Produto</button>
-        </div>
+            <div class="topo-acoes">
+                <button type="button" class="botao-tema" aria-pressed="false"
+                    aria-label="Mudar para o tema escuro">
+                    <span class="icone-tema" aria-hidden="true">🌙</span>
+                    <span class="texto-tema">Tema escuro</span>
+                </button>
 
-        <!-- Indicadores / Cards -->
-        <section class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-label">Vendas do Mês</div>
-                <div class="metric-value">R$ 1.240,00</div>
-                <div class="metric-status status-positive">↑ 12% em relação a ontem</div>
+                <p class="perfil-usuaria">
+                    <img src="../img/avatar-amanda.svg" alt="Foto de perfil de Amanda Silva">
+                    <span class="nome-usuaria" data-nome-usuaria="">Amanda Silva</span>
+                </p>
             </div>
+        </header>
 
-            <div class="metric-card">
-                <div class="metric-label">Pedidos Realizados</div>
-                <div class="metric-value">18 itens</div>
-                <div class="metric-status status-pending">4 aguardando envio</div>
-            </div>
+        <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+        <main class="conteudo-painel" id="conteudo">
+            <section class="intro-pagina" aria-labelledby="titulo-painel">
+                <h1 class="titulo-pagina" id="titulo-painel">Painel Comercial da Loja</h1>
+                <p class="descricao-pagina">Acompanhe as vendas, os produtos publicados
+                    e os pedidos em aberto da sua loja no marketplace.</p>
+            </section>
 
-            <div class="metric-card">
-                <div class="metric-label">Visitas no Catálogo</div>
-                <div class="metric-value">342 acessos</div>
-                <div class="metric-status status-positive">↑ 5% esta semana</div>
-            </div>
+            <section aria-labelledby="titulo-numeros-loja">
+                <h2 class="titulo-secao" id="titulo-numeros-loja">Resumo do mês</h2>
 
-            <div class="metric-card">
-                <div class="metric-label">Saldo Disponível</div>
-                <div class="metric-value">R$ 850,00</div>
-                <div class="metric-status status-neutral">Próximo saque: 05/06</div>
-            </div>
-        </section>
+                <div class="grade-cartoes">
+                    <article class="cartao cartao-indicador">
+                        <div>
+                            <p class="rotulo-indicador">Vendas no mês</p>
+                            <p class="valor-indicador">R$ 1.240,00</p>
+                        </div>
+                        <p class="apoio-indicador">18 pedidos concluídos</p>
+                    </article>
 
-        <!-- Tabela de Pedidos Recentes -->
-        <section class="orders-section">
-            <h2 class="section-title">Últimos Pedidos Recebidos</h2>
-            <table class="orders-table">
-                <thead>
-                    <tr>
-                        <th>ID Pedido</th>
-                        <th>Cliente</th>
-                        <th>Produto</th>
-                        <th>Valor</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="color: #7a756e;">#1024</td>
-                        <td style="font-weight: 500;">Mariana Souza</td>
-                        <td>Bolsa de Crochê Artesanal</td>
-                        <td>R$ 89,90</td>
-                        <td><span class="badge badge-waiting">Aguardando Envio</span></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #7a756e;">#1023</td>
-                        <td style="font-weight: 500;">Beatriz Lima</td>
-                        <td>Avental de Cozinha Regulável</td>
-                        <td>R$ 35,00</td>
-                        <td><span class="badge badge-success">Concluído</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+                    <article class="cartao cartao-indicador">
+                        <div>
+                            <p class="rotulo-indicador">Produtos publicados</p>
+                            <p class="valor-indicador">12 itens</p>
+                        </div>
+                        <p class="apoio-indicador">3 aguardando aprovação</p>
+                    </article>
+
+                    <article class="cartao cartao-indicador">
+                        <div>
+                            <p class="rotulo-indicador">Pedidos em aberto</p>
+                            <p class="valor-indicador">4 pedidos</p>
+                        </div>
+                        <p class="apoio-indicador">Prazo médio de entrega: 3 dias</p>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="titulo-produtos-loja">
+                <h2 class="titulo-secao" id="titulo-produtos-loja">Meus produtos</h2>
+
+                <div class="grade-cartoes">
+                    <article class="cartao cartao-produto">
+                        <img src="../img/produto-doces.svg"
+                            alt="Bolo de milho caseiro decorado com frutas vermelhas">
+                        <div class="corpo-produto">
+                            <span class="etiqueta etiqueta-sucesso">Publicado</span>
+                            <h3>Bolo de milho caseiro</h3>
+                            <p class="preco-produto">R$ 45,00</p>
+                        </div>
+                    </article>
+
+                    <article class="cartao cartao-produto">
+                        <img src="../img/produto-artesanato.svg"
+                            alt="Jogo americano artesanal feito em fuxico colorido">
+                        <div class="corpo-produto">
+                            <span class="etiqueta etiqueta-aviso">Em análise</span>
+                            <h3>Jogo americano em fuxico</h3>
+                            <p class="preco-produto">R$ 68,00</p>
+                        </div>
+                    </article>
+                </div>
+
+                <p style="margin-top: 18px">
+                    <a class="botao-principal" href="marketplace.html">Ver minha loja no marketplace</a>
+                </p>
+            </section>
+        </main>
+
+        <!-- ================= RODAPÉ ================= -->
+        <footer class="rodape-painel">
+            <p>&copy; 2026 Empreenda Mais Elas</p>
+            <ul>
+                <li><a href="../index.html">Início do site</a></li>
+                <li><a href="../index.html#faq">Perguntas frequentes</a></li>
+                <li><a href="../index.html#contato">Fale conosco</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="../js/auth.js" defer></script>
 
 </body>
+
 </html>

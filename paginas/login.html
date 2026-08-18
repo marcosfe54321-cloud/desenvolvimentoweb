@@ -1,464 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empreenda+ Elas - Login</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <meta name="description"
+        content="Acesse sua conta no Empreenda Mais Elas e continue sua trilha de aprendizagem.">
+    <title>Entrar - Empreenda Mais Elas</title>
 
-        body {
-            background-color: #ffffff;
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    <link rel="icon" href="../img/logo-simbolo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/auth.css">
 
-        /* Estrutura de Divisão da Tela */
-        .login-container {
-            flex: 1;
-            display: flex;
-        }
-
-        /* Coluna da Esquerda (Banner) */
-        .banner-side {
-            flex: 1;
-            background-color: #f5ece1; /* Cor de fundo caso a imagem falhe */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ebdcd5%22/></svg>');
-            background-size: cover;
-            background-position: center;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            color: #ffffff;
-        }
-
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 60px;
-        }
-
-        .logo-circle {
-            width: 44px;
-            height: 44px;
-            background-color: #ffffff;
-            border-radius: 8px;
-        }
-
-        .logo-brand {
-            font-weight: 800;
-            font-size: 18px;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
-            color: #ffffff;
-        }
-
-        .banner-headline {
-            font-size: 42px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            max-width: 480px;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .banner-subtext {
-            font-size: 18px;
-            font-weight: 500;
-            line-height: 1.4;
-            max-width: 420px;
-            color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
-
-        /* Coluna da Direita (Formulário) */
-        .form-side {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px;
-            background-color: #ffffff;
-        }
-
-        .form-wrapper {
-            width: 100%;
-            max-width: 420px;
-        }
-
-        .welcome-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-
-        .welcome-subtitle {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 36px;
-        }
-
-        /* Abas (Tabs) Entrar / Cadastrar */
-        .tabs-container {
-            display: flex;
-            border-bottom: 1px solid #e8e2da;
-            margin-bottom: 28px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            background: none;
-            border: none;
-            padding: 12px 0;
-            font-size: 14px;
-            font-weight: 600;
-            color: #888;
-            cursor: pointer;
-            text-align: center;
-            position: relative;
-            text-decoration: none;
-        }
-
-        .tab-btn.active {
-            color: #a63232;
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #a63232;
-        }
-
-        /* Inputs e Caixa de Texto */
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-
-        .input-field-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 14px 16px 14px 44px;
-            border: 1px solid #e8e2da;
-            background-color: #f7f6f5;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .input-field:focus {
-            border-color: #a63232;
-            background-color: #ffffff;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 16px;
-            color: #888;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 16px;
-            cursor: pointer;
-            color: #888;
-        }
-
-        .forgot-password-wrapper {
-            text-align: right;
-            margin-top: -12px;
-            margin-bottom: 24px;
-        }
-
-        .remember-line {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: -4px;
-            margin-bottom: 20px;
-            font-size: 13px;
-        }
-
-        .remember-line label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #544d47;
-        }
-
-        .forgot-password {
-            font-size: 12px;
-            color: #a63232;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .form-message {
-            display: none;
-            padding: 10px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            margin-bottom: 14px;
-        }
-
-        .form-message.is-error {
-            display: block;
-            background: #fdeeee;
-            color: #8a2828;
-            border: 1px solid #f2c8c8;
-        }
-
-        .form-message.is-success {
-            display: block;
-            background: #edf8ef;
-            color: #27613a;
-            border: 1px solid #bfddc6;
-        }
-
-        /* Botão de Submissão */
-        .btn-submit {
-            width: 100%;
-            background-color: #8b263e;
-            color: #ffffff;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-bottom: 28px;
-        }
-
-        .btn-submit:hover {
-            background-color: #701e31;
-        }
-
-        /* Divisor "OU CONTINUE COM" */
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 24px;
-            color: #888;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #e8e2da;
-        }
-
-        .divider:not(:empty)::before { margin-right: .5em; }
-        .divider:not(:empty)::after { margin-left: .5em; }
-
-        /* Botões Redes Sociais */
-        .social-container {
-            display: flex;
-            gap: 16px;
-        }
-
-        .btn-social {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px;
-            border: 1px solid #e8e2da;
-            border-radius: 8px;
-            background-color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-social:hover {
-            background-color: #f7f6f5;
-        }
-
-        /* Rodapé (Footer) */
-        .footer-bar {
-            padding: 24px 60px;
-            border-top: 1px solid #e8e2da;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: #7a756e;
-            background-color: #ffffff;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
-            color: #615e5a;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Adaptação para Telas de Telemóvel */
-        @media (max-width: 868px) {
-            .login-container {
-                flex-direction: column;
-            }
-            .banner-side {
-                padding: 40px;
-                min-height: 300px;
-            }
-            .form-side {
-                padding: 40px 20px;
-            }
-            .footer-bar {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-                padding: 24px;
-            }
-            .footer-links {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 16px;
-            }
-
-            .social-container {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <!-- Sem "defer": o tema precisa ser aplicado antes da pagina pintar -->
+    <script src="../js/tema.js"></script>
 </head>
-<body>
 
-    <div class="login-container">
-        <!-- Lado Esquerdo: Imagem e Texto Motivacional -->
-        <div class="banner-side">
-            <div class="logo-box">
-                <div class="logo-circle"></div>
-                <span class="logo-brand">EMPREENDA<br>MAIS ELAS</span>
+<body class="layout-auth">
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <div class="auth-container">
+        <!-- ============ LADO ESQUERDO: IMAGEM ============ -->
+        <header class="auth-banner">
+            <a class="logo-marca" href="../index.html">
+                <img src="../img/logo-simbolo.svg" alt="Empreenda Mais Elas - página inicial"
+                    width="48" height="48">
+                <span class="somente-leitor-tela">Empreenda Mais Elas - página inicial</span>
+            </a>
+
+            <img src="../img/banner-auth.svg"
+                alt="Ilustração de três empreendedoras apoiando umas às outras">
+
+            <div class="auth-banner-texto">
+                <p class="auth-banner-titulo">O sucesso é construído juntas.</p>
+                <p class="auth-banner-apoio">Junte-se à comunidade que eleva mulheres
+                    empreendedoras.</p>
             </div>
-            <h1 class="banner-headline">O SUCESSO É CONSTRUÍDO JUNTAS.</h1>
-            <p class="banner-subtext">Junte-se à comunidade que eleva mulheres empreendedoras.</p>
-        </div>
+        </header>
 
-        <!-- Lado Direito: Formulário Clínico de Login -->
-        <div class="form-side">
-            <div class="form-wrapper">
-                <h2 class="welcome-title">Bem-vinda de volta</h2>
-                <p class="welcome-subtitle">Acesse sua conta para continuar.</p>
+        <!-- ============ LADO DIREITO: FORMULÁRIO ============ -->
+        <main class="auth-formulario" id="conteudo">
+            <div class="auth-caixa">
+                <h1 class="auth-titulo">Bem-vinda de volta</h1>
+                <p class="auth-subtitulo">Acesse sua conta para continuar.</p>
 
-                <div class="tabs-container">
-                    <a class="tab-btn active" href="login.html">Entrar</a>
-                    <a class="tab-btn" href="register.html">Cadastrar</a>
-                </div>
+                <nav class="auth-abas" aria-label="Entrar ou cadastrar">
+                    <a class="auth-aba" href="login.html" aria-current="page">Entrar</a>
+                    <a class="auth-aba" href="register.html">Cadastrar</a>
+                </nav>
 
-                <div id="login-message" class="form-message" role="status" aria-live="polite"></div>
+                <p id="mensagem-login" class="mensagem-status auth-mensagem" role="status"
+                    aria-live="polite"></p>
 
-                <form id="login-form" novalidate>
-                    <!-- Campo E-mail -->
-                    <div class="input-group">
-                        <label class="input-label" for="login-email">E-mail</label>
-                        <div class="input-field-wrapper">
-                            <span class="input-icon">&#9993;</span>
-                            <input id="login-email" name="email" type="email" class="input-field" placeholder="seu@email.com" required>
+                <!-- novalidate: a validação é feita por js/auth.js -->
+                <form id="formulario-login" novalidate>
+                    <div class="campo">
+                        <label for="login-email">E-mail</label>
+                        <div class="campo-com-icone">
+                            <span class="icone-campo" aria-hidden="true">✉</span>
+                            <input type="email" id="login-email" name="email"
+                                autocomplete="email" placeholder="seu@email.com"
+                                aria-describedby="erro-login-email" required>
                         </div>
+                        <small class="mensagem-erro" id="erro-login-email"
+                            data-erro-de="email" role="alert"></small>
                     </div>
 
-                    <!-- Campo Senha -->
-                    <div class="input-group">
-                        <label class="input-label" for="login-password">Senha</label>
-                        <div class="input-field-wrapper">
-                            <span class="input-icon">&#128274;</span>
-                            <input id="login-password" name="password" type="password" class="input-field" placeholder="Digite sua senha" required>
-                            <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">&#128065;</button>
+                    <div class="campo">
+                        <label for="login-senha">Senha</label>
+                        <div class="campo-com-icone">
+                            <span class="icone-campo" aria-hidden="true">🔒</span>
+                            <input type="password" id="login-senha" name="senha"
+                                autocomplete="current-password" placeholder="Digite sua senha"
+                                aria-describedby="erro-login-senha" required>
+                            <button type="button" class="mostrar-senha"
+                                aria-label="Mostrar senha">👁</button>
                         </div>
+                        <small class="mensagem-erro" id="erro-login-senha"
+                            data-erro-de="senha" role="alert"></small>
                     </div>
 
-                    <div class="remember-line">
-                        <label for="remember-session">
-                            <input id="remember-session" name="remember" type="checkbox">
+                    <div class="linha-lembrar">
+                        <label class="linha-checkbox" for="login-lembrar">
+                            <input type="checkbox" id="login-lembrar" name="lembrar">
                             <span>Lembrar de mim neste dispositivo</span>
                         </label>
 
-                        <div class="forgot-password-wrapper">
-                            <a href="register.html" class="forgot-password">Esqueci minha senha</a>
-                        </div>
+                        <a class="esqueci-senha" href="../index.html#contato">Esqueci minha senha</a>
                     </div>
 
-                    <!-- Botão Entrar -->
-                    <button type="submit" class="btn-submit">Entrar</button>
+                    <button type="submit" class="botao-principal auth-enviar">Entrar</button>
 
-                    <!-- Divisor -->
-                    <div class="divider">OU CONTINUE COM</div>
+                    <p class="divisor">OU CONTINUE COM</p>
 
-                    <!-- Provedores Sociais -->
-                    <div class="social-container">
-                        <button type="button" class="btn-social">
-                            <span>G</span> Google
+                    <div class="botoes-sociais">
+                        <button type="button" class="botao-social">
+                            <span class="marca-social" aria-hidden="true">G</span> Google
                         </button>
-                        <button type="button" class="btn-social">
-                            <span>f</span> Facebook
+                        <button type="button" class="botao-social">
+                            <span class="marca-social" aria-hidden="true">f</span> Facebook
                         </button>
                     </div>
+
+                    <p class="link-extra">
+                        Ainda não tem conta? <a href="register.html">Cadastre-se agora</a>
+                    </p>
                 </form>
             </div>
-        </div>
+        </main>
     </div>
 
-    <!-- Rodapé Unificado -->
-    <footer class="footer-bar">
-        <div class="footer-links">
-            <a href="../index.html">Sobre</a>
-            <a href="../index.html">Políticas de Privacidade</a>
-            <a href="../index.html">Termos e serviços</a>
-            <a href="../index.html">Contato e Suporte</a>
-        </div>
-        <div>
-            &copy; 2026 Empreenda Mais Elas
-        </div>
+    <!-- ================= RODAPÉ ================= -->
+    <footer class="rodape-auth">
+        <nav aria-label="Links do rodapé">
+            <ul>
+                <li><a href="../index.html">Início do site</a></li>
+                <li><a href="../index.html#servicos">Nossos serviços</a></li>
+                <li><a href="../index.html#faq">Perguntas frequentes</a></li>
+                <li><a href="../index.html#contato">Contato e suporte</a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2026 Empreenda Mais Elas</p>
     </footer>
 
-    <script src="../js/auth.js"></script>
-
+    <script src="../js/auth.js" defer></script>
 </body>
+
 </html>

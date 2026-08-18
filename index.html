@@ -1,217 +1,358 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Empreenda Mais Elas - Plataforma de apoio ao empreendedorismo feminino">
+    <meta name="description"
+        content="Empreenda Mais Elas - plataforma de apoio ao empreendedorismo feminino com mentorias, trilhas de aprendizado, diagnostico de negocios e marketplace.">
     <title>Empreenda Mais Elas - Plataforma de Empreendedorismo Feminino</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" href="img/logo-simbolo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Sem "defer": o tema precisa ser aplicado antes da pagina pintar -->
+    <script src="js/tema.js"></script>
 </head>
+
 <body>
-    <!-- CABEÇALHO -->
-    <header>
-        <div class="container-header">
-            <div class="header-topo">
-                <div class="logo">
-                    <h1>Empreenda Mais Elas</h1>
-                </div>
-                <button class="theme-toggle" type="button" aria-label="Alternar tema">🌙 Tema escuro</button>
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ================= CABEÇALHO ================= -->
+    <header class="cabecalho-site">
+        <div class="cabecalho-caixa">
+            <div class="cabecalho-topo">
+                <a class="logo-marca" href="index.html">
+                    <img src="img/logo.svg" alt="Empreenda Mais Elas - página inicial">
+                    <span class="somente-leitor-tela">Página inicial</span>
+                </a>
+
+                <button type="button" class="botao-tema" aria-pressed="false"
+                    aria-label="Mudar para o tema escuro">
+                    <span class="icone-tema" aria-hidden="true">🌙</span>
+                    <span class="texto-tema">Tema escuro</span>
+                </button>
             </div>
-            <p class="tagline">Transformando ideias em negócios de sucesso</p>
+
+            <h1 class="titulo-site">Empreenda Mais Elas</h1>
+            <p class="subtitulo-site">Transformando ideias em negócios de sucesso</p>
         </div>
     </header>
 
-    <!-- NAVEGAÇÃO -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
+    <!-- ================= NAVEGAÇÃO ================= -->
+    <nav class="menu-principal" aria-label="Navegação principal">
+        <ul class="menu-lista">
+            <li><a href="index.html" aria-current="page">Início</a></li>
             <li><a href="paginas/dashboard.html">Dashboard</a></li>
             <li><a href="paginas/mentorias.html">Mentorias</a></li>
-            <li><a href="paginas/trilhas.html">Trilhas de Aprendizado</a></li>
+            <li><a href="paginas/trilhas.html">Trilhas</a></li>
             <li><a href="paginas/marketplace.html">Marketplace</a></li>
             <li><a href="paginas/diagnostico.html">Diagnóstico</a></li>
-            <li><a href="paginas/login.html">Login</a></li>
+            <li><a href="paginas/login.html">Entrar</a></li>
         </ul>
     </nav>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main>
-        <!-- BANNER/SEÇÃO INTRODUTÓRIA -->
-        <section class="secao-destaque">
-            <h2>Bem-vinda ao Empreenda Mais Elas</h2>
-            <p>Uma plataforma completa para empreendedoras que desejam crescer, aprender e alcançar o sucesso em seus negócios.</p>
-            <p>Oferecemos mentoria, trilhas de aprendizado, ferramentas de diagnóstico e um marketplace para conectar empreendedoras.</p>
+    <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+    <main class="conteudo-site" id="conteudo">
+
+        <!-- Banner de apresentação -->
+        <section class="cartao secao-destaque" aria-labelledby="titulo-boas-vindas">
+            <div>
+                <h2 id="titulo-boas-vindas">Bem-vinda ao Empreenda Mais Elas</h2>
+                <p>Uma plataforma completa para empreendedoras que desejam crescer,
+                    aprender e alcançar o sucesso em seus negócios.</p>
+                <p>Oferecemos mentoria, trilhas de aprendizado, ferramentas de
+                    diagnóstico e um marketplace para conectar empreendedoras.</p>
+                <a class="botao-principal" href="paginas/register.html">Criar conta gratuita</a>
+            </div>
+
+            <img src="img/hero-empreendedoras.svg"
+                alt="Três empreendedoras reunidas em frente a um quadro de metas do negócio"
+                width="560" height="340">
         </section>
 
-        <!-- SEÇÃO DE SERVIÇOS/FUNCIONALIDADES -->
-        <section class="secao-servicos">
-            <h2>Nossos Serviços</h2>
-            
+        <!-- Serviços -->
+        <section class="cartao secao-servicos" id="servicos" aria-labelledby="titulo-servicos">
+            <h2 id="titulo-servicos">Nossos Serviços</h2>
+
             <article class="servico">
-                <h3>Mentorias Personalizadas</h3>
-                <p>Conecte-se com mentoras experientes que irão guiá-lo no desenvolvimento do seu negócio, oferecendo orientações práticas e estratégicas.</p>
+                <img src="img/icone-mentoria.svg" alt="" width="56" height="56">
+                <div>
+                    <h3>Mentorias Personalizadas</h3>
+                    <p>Conecte-se com mentoras experientes que vão guiar você no
+                        desenvolvimento do seu negócio, com orientações práticas
+                        e estratégicas.</p>
+                </div>
             </article>
 
             <article class="servico">
-                <h3>Trilhas de Aprendizado</h3>
-                <p>Acesse conteúdos estruturados e cursos online para desenvolver habilidades essenciais em gestão, marketing, finanças e muito mais.</p>
+                <img src="img/icone-trilhas.svg" alt="" width="56" height="56">
+                <div>
+                    <h3>Trilhas de Aprendizado</h3>
+                    <p>Acesse conteúdos estruturados e cursos online para desenvolver
+                        habilidades essenciais em gestão, marketing, finanças e muito mais.</p>
+                </div>
             </article>
 
             <article class="servico">
-                <h3>Ferramenta de Diagnóstico</h3>
-                <p>Avalie o estágio atual do seu negócio através de uma análise completa e receba recomendações personalizadas para melhorias.</p>
+                <img src="img/icone-diagnostico.svg" alt="" width="56" height="56">
+                <div>
+                    <h3>Ferramenta de Diagnóstico</h3>
+                    <p>Avalie o estágio atual do seu negócio com uma análise completa
+                        e receba recomendações personalizadas de melhoria.</p>
+                </div>
             </article>
 
             <article class="servico">
-                <h3>Marketplace</h3>
-                <p>Vitrine digital onde empreendedoras podem exibir seus produtos e serviços, ampliando o alcance de suas marcas.</p>
+                <img src="img/icone-marketplace.svg" alt="" width="56" height="56">
+                <div>
+                    <h3>Marketplace</h3>
+                    <p>Vitrine digital onde empreendedoras exibem seus produtos e
+                        serviços, ampliando o alcance de suas marcas.</p>
+                </div>
             </article>
         </section>
 
-        <!-- SEÇÃO DE ESTATÍSTICAS/NÚMEROS -->
-        <section class="secao-numeros">
-            <h2>Impacto do Empreenda Mais Elas</h2>
+        <!-- Números -->
+        <section class="cartao secao-numeros" id="impacto" aria-labelledby="titulo-impacto">
+            <h2 id="titulo-impacto">Impacto do Empreenda Mais Elas</h2>
+
             <article class="numero">
                 <h3>500+</h3>
                 <p>Empreendedoras atendidas</p>
             </article>
+
             <article class="numero">
                 <h3>150+</h3>
                 <p>Mentorias realizadas</p>
             </article>
+
             <article class="numero">
                 <h3>1000+</h3>
                 <p>Horas de conteúdo</p>
             </article>
+
             <article class="numero">
                 <h3>50+</h3>
                 <p>Trilhas de aprendizado</p>
             </article>
         </section>
 
-        <!-- SEÇÃO LATERAL COM INFORMAÇÕES ADICIONAIS -->
-        <aside class="informacoes-adicionais">
-            <h3>Informações Importantes</h3>
+        <!-- Informações adicionais -->
+        <aside class="cartao informacoes-adicionais" aria-labelledby="titulo-informacoes">
+            <h2 id="titulo-informacoes">Informações Importantes</h2>
             <ul>
                 <li>Plataforma 100% segura e confiável</li>
                 <li>Acesso 24 horas por dia</li>
-                <li>Suporte dedicado ao empreendedor</li>
+                <li>Suporte dedicado à empreendedora</li>
                 <li>Conteúdo atualizado regularmente</li>
                 <li>Comunidade ativa de empreendedoras</li>
             </ul>
         </aside>
 
-        <!-- SEÇÃO DE CHAMADA PARA AÇÃO -->
-        <section class="secao-chamada-acao">
-            <h2>Comece Agora</h2>
-            <p>Junte-se a milhares de empreendedoras que já estão transformando suas vidas através do Empreenda Mais Elas.</p>
-            <p>Crie sua conta gratuitamente e acesse todas as nossas ferramentas e recursos.</p>
-            <a href="paginas/register.html" class="botao-principal">Criar Conta</a>
-            <a href="paginas/login.html" class="botao-secundario">Já tenho conta</a>
+        <!-- Perguntas frequentes (interação JS: acordeão) -->
+        <section class="cartao" id="faq" aria-labelledby="titulo-faq">
+            <h2 id="titulo-faq">Perguntas Frequentes</h2>
+
+            <div class="lista-faq">
+                <article class="item-faq">
+                    <h3>
+                        <button type="button" class="pergunta-faq" aria-expanded="false"
+                            aria-controls="resposta-1">
+                            A plataforma é gratuita?
+                            <span class="sinal-faq" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div class="resposta-faq" id="resposta-1" hidden>
+                        <p>Sim. O cadastro, as trilhas de aprendizado e a ferramenta de
+                            diagnóstico são gratuitos. Algumas mentorias especializadas
+                            podem ter custo, sempre informado antes do agendamento.</p>
+                    </div>
+                </article>
+
+                <article class="item-faq">
+                    <h3>
+                        <button type="button" class="pergunta-faq" aria-expanded="false"
+                            aria-controls="resposta-2">
+                            Preciso já ter um negócio para participar?
+                            <span class="sinal-faq" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div class="resposta-faq" id="resposta-2" hidden>
+                        <p>Não. A plataforma atende desde quem está estruturando uma ideia
+                            até quem já vende e quer crescer. O diagnóstico indica a trilha
+                            certa para o seu momento.</p>
+                    </div>
+                </article>
+
+                <article class="item-faq">
+                    <h3>
+                        <button type="button" class="pergunta-faq" aria-expanded="false"
+                            aria-controls="resposta-3">
+                            Como funciona o agendamento de mentorias?
+                            <span class="sinal-faq" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div class="resposta-faq" id="resposta-3" hidden>
+                        <p>Na página de Mentorias você escolhe a mentora, a data e o
+                            horário. A confirmação chega por e-mail e o encontro acontece
+                            em sala online.</p>
+                    </div>
+                </article>
+
+                <article class="item-faq">
+                    <h3>
+                        <button type="button" class="pergunta-faq" aria-expanded="false"
+                            aria-controls="resposta-4">
+                            Posso vender meus produtos no marketplace?
+                            <span class="sinal-faq" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div class="resposta-faq" id="resposta-4" hidden>
+                        <p>Pode. Depois de concluir a trilha inicial, você solicita a
+                            abertura da sua loja pelo Painel da Empreendedora e nossa
+                            equipe aprova o catálogo.</p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <!-- FORMULÁRIO DE CONTATO -->
-        <section class="secao-contato" aria-labelledby="titulo-contato">
-            <div class="secao-contato-header">
+        <!-- Chamada para ação -->
+        <section class="cartao secao-chamada-acao" aria-labelledby="titulo-comece">
+            <h2 id="titulo-comece">Comece Agora</h2>
+            <p>Junte-se a milhares de empreendedoras que já estão transformando suas
+                vidas através do Empreenda Mais Elas.</p>
+            <p>Crie sua conta gratuitamente e acesse todas as nossas ferramentas.</p>
+
+            <div class="grupo-botoes">
+                <a href="paginas/register.html" class="botao-principal">Criar Conta</a>
+                <a href="paginas/login.html" class="botao-secundario">Já tenho conta</a>
+            </div>
+        </section>
+
+        <!-- ============ FORMULÁRIO DE CONTATO ============ -->
+        <section class="cartao secao-contato" id="contato" aria-labelledby="titulo-contato">
+            <div class="contato-cabecalho">
                 <h2 id="titulo-contato">Fale com a nossa equipe</h2>
-                <p>Quer saber mais sobre mentoria, cursos ou como começar seu negócio? Preencha o formulário abaixo.</p>
+                <p>Quer saber mais sobre mentoria, cursos ou como começar seu negócio?
+                    Preencha o formulário abaixo. Os campos marcados com
+                    <abbr title="obrigatório">*</abbr> são obrigatórios.</p>
             </div>
 
+            <!-- novalidate: a validação é feita por js/contato.js -->
             <form id="formulario-contato" novalidate>
                 <div class="campo-duplo">
                     <div class="campo">
-                        <label for="nome">Nome completo</label>
-                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-                        <small class="mensagem-erro" data-error-for="nome"></small>
+                        <label for="nome">Nome completo <abbr title="obrigatório">*</abbr></label>
+                        <input type="text" id="nome" name="nome" autocomplete="name"
+                            placeholder="Digite seu nome" aria-describedby="erro-nome" required>
+                        <small class="mensagem-erro" id="erro-nome" data-erro-de="nome"
+                            role="alert"></small>
                     </div>
 
                     <div class="campo">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
-                        <small class="mensagem-erro" data-error-for="email"></small>
+                        <label for="email">E-mail <abbr title="obrigatório">*</abbr></label>
+                        <input type="email" id="email" name="email" autocomplete="email"
+                            placeholder="seuemail@exemplo.com" aria-describedby="erro-email" required>
+                        <small class="mensagem-erro" id="erro-email" data-erro-de="email"
+                            role="alert"></small>
                     </div>
                 </div>
 
                 <div class="campo-duplo">
                     <div class="campo">
-                        <label for="interesse">Área de interesse</label>
-                        <select id="interesse" name="interesse" required>
+                        <label for="interesse">Área de interesse <abbr title="obrigatório">*</abbr></label>
+                        <select id="interesse" name="interesse" aria-describedby="erro-interesse" required>
                             <option value="">Selecione uma opção</option>
                             <option value="mentoria">Mentoria</option>
                             <option value="trilhas">Trilhas de aprendizagem</option>
                             <option value="diagnostico">Diagnóstico de negócios</option>
                             <option value="marketplace">Marketplace</option>
-                            <option value="outro">Outro</option>
+                            <option value="outro">Outro assunto</option>
                         </select>
-                        <small class="mensagem-erro" data-error-for="interesse"></small>
+                        <small class="mensagem-erro" id="erro-interesse" data-erro-de="interesse"
+                            role="alert"></small>
                     </div>
 
                     <div class="campo">
-                        <label for="telefone">Telefone</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-                        <small class="mensagem-erro" data-error-for="telefone"></small>
+                        <label for="telefone">Telefone <abbr title="obrigatório">*</abbr></label>
+                        <input type="tel" id="telefone" name="telefone" autocomplete="tel"
+                            placeholder="(88) 99999-9999" aria-describedby="erro-telefone" required>
+                        <small class="mensagem-erro" id="erro-telefone" data-erro-de="telefone"
+                            role="alert"></small>
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte um pouco sobre sua necessidade" required></textarea>
-                    <small class="mensagem-erro" data-error-for="mensagem"></small>
+                    <label for="mensagem">Mensagem <abbr title="obrigatório">*</abbr></label>
+                    <textarea id="mensagem" name="mensagem" rows="5"
+                        placeholder="Conte um pouco sobre sua necessidade"
+                        aria-describedby="erro-mensagem" required></textarea>
+                    <small class="mensagem-erro" id="erro-mensagem" data-erro-de="mensagem"
+                        role="alert"></small>
                 </div>
 
                 <button type="submit" class="botao-principal botao-envio">Enviar mensagem</button>
-                <p id="statusMensagem" class="status-mensagem" aria-live="polite"></p>
+
+                <p id="status-formulario" class="mensagem-status" role="status" aria-live="polite"></p>
             </form>
         </section>
     </main>
 
-    <!-- RODAPÉ -->
-    <footer>
+    <!-- ================= RODAPÉ ================= -->
+    <footer class="rodape-site">
         <div class="rodape-conteudo">
-            <section class="rodape-coluna">
-                <h4>Sobre Nós</h4>
+            <nav class="rodape-coluna" aria-label="Plataforma">
+                <h3>Plataforma</h3>
                 <ul>
-                    <li><a href="index.html">Quem Somos</a></li>
-                    <li><a href="index.html">Nossa Missão</a></li>
-                    <li><a href="index.html">Equipe</a></li>
+                    <li><a href="paginas/dashboard.html">Dashboard</a></li>
+                    <li><a href="paginas/trilhas.html">Trilhas de aprendizagem</a></li>
+                    <li><a href="paginas/mentorias.html">Mentorias</a></li>
+                    <li><a href="paginas/marketplace.html">Marketplace</a></li>
+                    <li><a href="paginas/diagnostico.html">Diagnóstico</a></li>
                 </ul>
-            </section>
+            </nav>
 
-            <section class="rodape-coluna">
-                <h4>Recursos</h4>
+            <nav class="rodape-coluna" aria-label="Painéis">
+                <h3>Painéis</h3>
                 <ul>
-                    <li><a href="paginas/trilhas.html">Perguntas Frequentes</a></li>
-                    <li><a href="paginas/marketplace.html">Blog</a></li>
-                    <li><a href="paginas/mentorias.html">Centro de Ajuda</a></li>
+                    <li><a href="paginas/painelempreendedora.html">Painel da empreendedora</a></li>
+                    <li><a href="paginas/paineladministrativo.html">Painel administrativo</a></li>
+                    <li><a href="paginas/register.html">Criar conta</a></li>
+                    <li><a href="paginas/login.html">Entrar</a></li>
                 </ul>
-            </section>
+            </nav>
 
-            <section class="rodape-coluna">
-                <h4>Legal</h4>
+            <nav class="rodape-coluna" aria-label="Sobre o projeto">
+                <h3>Sobre o projeto</h3>
                 <ul>
-                    <li><a href="paginas/register.html">Política de Privacidade</a></li>
-                    <li><a href="paginas/login.html">Termos de Uso</a></li>
-                    <li><a href="paginas/dashboard.html">Contato</a></li>
+                    <li><a href="#servicos">Nossos serviços</a></li>
+                    <li><a href="#impacto">Nosso impacto</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                    <li><a href="#contato">Fale conosco</a></li>
                 </ul>
-            </section>
+            </nav>
 
-            <section class="rodape-coluna">
-                <h4>Redes Sociais</h4>
+            <nav class="rodape-coluna" aria-label="Redes sociais">
+                <h3>Redes Sociais</h3>
                 <ul>
-                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                    <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 </ul>
-            </section>
+            </nav>
         </div>
 
         <div class="rodape-base">
-            <p>&copy; 2026 Empreenda Mais Elas. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Empreenda Mais Elas. Projeto acadêmico de Desenvolvimento para Web.</p>
         </div>
     </footer>
 
-    <!-- SCRIPT -->
-    <script src="js/script.js"></script>
+    <!-- ================= SCRIPTS ================= -->
+    <script src="js/contato.js" defer></script>
+    <script src="js/faq.js" defer></script>
 </body>
+
 </html>

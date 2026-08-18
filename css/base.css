@@ -1,0 +1,413 @@
+/* ==========================================================================
+   BASE.CSS - Fundacao compartilhada por TODAS as paginas
+   Tokens de cor, reset, tipografia, tema claro/escuro, botoes, formularios,
+   cabecalho, navegacao e rodape.
+   Deve ser o PRIMEIRO css carregado em qualquer pagina.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS DE DESIGN (tema claro)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Cores da marca */
+    --cor-primaria: #a63232;
+    --cor-primaria-escura: #842525;
+    --cor-primaria-suave: #f7eded;
+
+    /* Superficies e texto */
+    --fundo: #f8f4ef;
+    --fundo-degrade-1: #f3e5d8;
+    --fundo-degrade-2: #f6f1ea;
+    --superficie: #ffffff;
+    --superficie-2: #fffaf5;
+    --texto: #2a2522;
+    --texto-suave: #6c6158;
+    --borda: #e8ddd1;
+
+    /* Estados */
+    --sucesso: #1d8b59;
+    --sucesso-fundo: #e7f5ee;
+    --erro: #c93d3d;
+    --erro-fundo: #fbeaea;
+    --info: #2f6f9e;
+    --info-fundo: #e8f1f8;
+    --aviso: #9a6b12;
+    --aviso-fundo: #fdf3e0;
+
+    /* Formularios */
+    --campo-fundo: #ffffff;
+    --texto-botao: #ffffff;
+    --foco-anel: rgba(166, 50, 50, 0.18);
+
+    /* Elevacao e forma */
+    --sombra: 0 12px 26px rgba(62, 34, 20, 0.08);
+    --sombra-suave: 0 4px 12px rgba(62, 34, 20, 0.06);
+    --raio: 16px;
+    --raio-pequeno: 10px;
+
+    /* Tipografia */
+    --fonte: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOKENS DO TEMA ESCURO
+   Aplicado na tag <html> por js/tema.js ANTES da pagina pintar (evita piscar).
+   Basta redefinir os tokens aqui para o tema valer no site inteiro.
+   -------------------------------------------------------------------------- */
+html.tema-escuro {
+    --cor-primaria: #ff9b9b;
+    --cor-primaria-escura: #f38080;
+    --cor-primaria-suave: #3a2626;
+
+    --fundo: #1a1515;
+    --fundo-degrade-1: #241c1c;
+    --fundo-degrade-2: #171212;
+    --superficie: #251f1f;
+    --superficie-2: #2d2424;
+    --texto: #f7efe9;
+    --texto-suave: #d9c8bb;
+    --borda: #433838;
+
+    --sucesso: #7ad0a5;
+    --sucesso-fundo: #1e3a2d;
+    --erro: #ff8a8a;
+    --erro-fundo: #3c2323;
+    --info: #8fc4e8;
+    --info-fundo: #1e2e3a;
+    --aviso: #e8bf72;
+    --aviso-fundo: #3a2f1c;
+
+    --campo-fundo: #1f1a1a;
+    --texto-botao: #1d1515;
+    --foco-anel: rgba(255, 155, 155, 0.25);
+
+    --sombra: 0 12px 26px rgba(12, 8, 8, 0.4);
+    --sombra-suave: 0 4px 12px rgba(12, 8, 8, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--fonte);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--texto);
+    background-color: var(--fundo);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--cor-primaria);
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.25;
+}
+
+/* O atributo hidden precisa vencer regras como ".cartao-produto {display:flex}".
+   Sem isto o JavaScript esconde o elemento mas ele continua aparecendo. */
+[hidden] {
+    display: none !important;
+}
+
+/* Respeita quem prefere menos animacao */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. ACESSIBILIDADE
+   -------------------------------------------------------------------------- */
+.pular-para-conteudo {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 999;
+    background: var(--cor-primaria);
+    color: var(--texto-botao);
+    padding: 12px 20px;
+    border-radius: 0 0 var(--raio-pequeno) 0;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.pular-para-conteudo:focus {
+    left: 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+/* Texto visivel apenas para leitores de tela */
+.somente-leitor-tela {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. LOGOTIPO
+   -------------------------------------------------------------------------- */
+.logo-marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-marca img {
+    height: 40px;
+    width: auto;
+}
+
+/* No tema escuro o SVG do logo (vinho sobre transparente) perde contraste:
+   um leve clareamento resolve sem precisar de um segundo arquivo. */
+html.tema-escuro .logo-marca img {
+    filter: brightness(1.5) saturate(0.9);
+}
+
+/* --------------------------------------------------------------------------
+   6. BOTAO DE TEMA CLARO/ESCURO
+   -------------------------------------------------------------------------- */
+.botao-tema {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--borda);
+    background: var(--superficie-2);
+    color: var(--texto);
+    border-radius: 999px;
+    padding: 9px 16px;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.botao-tema:hover {
+    transform: translateY(-1px);
+    background: var(--cor-primaria-suave);
+}
+
+.botao-tema .icone-tema {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   7. BOTOES GERAIS
+   -------------------------------------------------------------------------- */
+.botao-principal,
+.botao-secundario {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: var(--raio-pequeno);
+    text-decoration: none;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botao-principal {
+    background: var(--cor-primaria);
+    color: var(--texto-botao);
+}
+
+.botao-principal:hover {
+    background: var(--cor-primaria-escura);
+}
+
+.botao-secundario {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    background: transparent;
+}
+
+.botao-secundario:hover {
+    background: var(--cor-primaria-suave);
+}
+
+/* --------------------------------------------------------------------------
+   8. FORMULARIOS (usado pelo formulario de contato, login e cadastro)
+   -------------------------------------------------------------------------- */
+.campo {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.campo label,
+.rotulo-campo {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--texto);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-pequeno);
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--texto);
+    background: var(--campo-fundo);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--texto-suave);
+    opacity: 0.75;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px var(--foco-anel);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+/* Estado de erro do campo */
+.campo-invalido {
+    border-color: var(--erro);
+    box-shadow: 0 0 0 3px var(--erro-fundo);
+}
+
+/* Mensagem de erro logo abaixo do campo */
+.mensagem-erro {
+    display: block;
+    min-height: 18px;
+    color: var(--erro);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* Mensagem geral de status do formulario (erro ou sucesso) */
+.mensagem-status {
+    min-height: 24px;
+    font-weight: 700;
+    border-radius: var(--raio-pequeno);
+    padding: 0;
+    transition: padding 0.2s ease;
+}
+
+.mensagem-status.is-erro,
+.mensagem-status.is-sucesso,
+.mensagem-status.is-info {
+    padding: 12px 14px;
+    border: 1px solid;
+}
+
+.mensagem-status.is-erro {
+    color: var(--erro);
+    background: var(--erro-fundo);
+    border-color: var(--erro);
+}
+
+.mensagem-status.is-sucesso {
+    color: var(--sucesso);
+    background: var(--sucesso-fundo);
+    border-color: var(--sucesso);
+}
+
+.mensagem-status.is-info {
+    color: var(--info);
+    background: var(--info-fundo);
+    border-color: var(--info);
+}
+
+/* --------------------------------------------------------------------------
+   9. ETIQUETAS DE STATUS (badges) - reaproveitadas em varias paginas
+   -------------------------------------------------------------------------- */
+.etiqueta {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.etiqueta-sucesso {
+    background: var(--sucesso-fundo);
+    color: var(--sucesso);
+}
+
+.etiqueta-aviso {
+    background: var(--aviso-fundo);
+    color: var(--aviso);
+}
+
+.etiqueta-info {
+    background: var(--info-fundo);
+    color: var(--info);
+}
+
+.etiqueta-neutra {
+    background: var(--superficie-2);
+    color: var(--texto-suave);
+    border: 1px solid var(--borda);
+}

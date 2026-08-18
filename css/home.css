@@ -1,0 +1,444 @@
+/* ==========================================================================
+   HOME.CSS - Estilos exclusivos da pagina inicial (index.html)
+   Depende de base.css, que deve ser carregado antes.
+   ========================================================================== */
+
+body {
+    /* O degrade agora usa tokens: acompanha o tema claro E o escuro */
+    background: radial-gradient(circle at top right,
+            var(--fundo-degrade-1) 0%,
+            var(--fundo) 40%,
+            var(--fundo-degrade-2) 100%);
+    background-attachment: fixed;
+}
+
+/* Largura unica para as faixas principais da pagina */
+.cabecalho-site,
+.menu-principal,
+.conteudo-site,
+.rodape-site {
+    width: min(1120px, 92vw);
+    margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   CABECALHO
+   -------------------------------------------------------------------------- */
+.cabecalho-site {
+    padding: 32px 0 20px;
+}
+
+.cabecalho-caixa {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 24px;
+}
+
+.cabecalho-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cabecalho-topo .logo-marca img {
+    height: 52px;
+}
+
+.titulo-site {
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    color: var(--cor-primaria);
+}
+
+.subtitulo-site {
+    color: var(--texto-suave);
+    margin-top: 6px;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+}
+
+/* --------------------------------------------------------------------------
+   MENU PRINCIPAL
+   -------------------------------------------------------------------------- */
+.menu-principal {
+    margin-bottom: 24px;
+}
+
+.menu-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: var(--sombra);
+}
+
+.menu-lista a {
+    display: block;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: var(--raio-pequeno);
+    color: var(--texto-suave);
+    font-weight: 600;
+}
+
+.menu-lista a:hover,
+.menu-lista a:focus-visible {
+    background: var(--cor-primaria-suave);
+    color: var(--cor-primaria);
+}
+
+/* Item da pagina atual */
+.menu-lista a[aria-current="page"] {
+    background: var(--cor-primaria);
+    color: var(--texto-botao);
+}
+
+/* --------------------------------------------------------------------------
+   CONTEUDO
+   -------------------------------------------------------------------------- */
+.conteudo-site {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+/* O cartao e uma CLASSE, nao o seletor de elemento "section".
+   Assim as sections do rodape nao herdam borda/sombra por engano. */
+.cartao {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 24px;
+    box-shadow: var(--sombra);
+}
+
+.conteudo-site h2 {
+    font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+    margin-bottom: 10px;
+}
+
+/* Banner de destaque -------------------------------------------------------*/
+.secao-destaque {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 28px;
+}
+
+.secao-destaque p {
+    color: var(--texto-suave);
+    margin-bottom: 10px;
+}
+
+.secao-destaque img {
+    border-radius: var(--raio);
+    width: 100%;
+}
+
+/* Servicos ----------------------------------------------------------------*/
+.secao-servicos {
+    display: grid;
+    /* Antes ficava sempre em 1 coluna. Agora sao 4 servicos em 2x2. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.secao-servicos h2 {
+    grid-column: 1 / -1;
+}
+
+.servico {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+    align-items: start;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 18px;
+    background: var(--superficie-2);
+}
+
+.servico img {
+    width: 56px;
+    height: 56px;
+}
+
+.servico h3 {
+    margin-bottom: 6px;
+    color: var(--cor-primaria);
+    font-size: 1.05rem;
+}
+
+.servico p {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+/* Numeros -----------------------------------------------------------------*/
+.secao-numeros {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: 14px;
+}
+
+.secao-numeros h2 {
+    grid-column: 1 / -1;
+}
+
+.numero {
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    background: var(--superficie-2);
+}
+
+.numero h3 {
+    font-size: 1.7rem;
+    color: var(--cor-primaria);
+}
+
+.numero p {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+/* Informacoes adicionais --------------------------------------------------*/
+.informacoes-adicionais ul {
+    display: grid;
+    gap: 8px;
+    color: var(--texto-suave);
+}
+
+.informacoes-adicionais li::before {
+    content: "\2713";
+    color: var(--cor-primaria);
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+/* Perguntas frequentes (interacao JS: acordeao) ----------------------------*/
+.lista-faq {
+    display: grid;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.item-faq {
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: var(--superficie-2);
+    overflow: hidden;
+}
+
+.pergunta-faq {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 18px;
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: 700;
+    color: var(--texto);
+    text-align: left;
+    cursor: pointer;
+}
+
+.pergunta-faq:hover {
+    color: var(--cor-primaria);
+}
+
+.pergunta-faq .sinal-faq {
+    flex-shrink: 0;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--cor-primaria);
+    transition: transform 0.25s ease;
+}
+
+.pergunta-faq[aria-expanded="true"] .sinal-faq {
+    transform: rotate(45deg);
+}
+
+.resposta-faq {
+    padding: 0 18px 16px;
+    color: var(--texto-suave);
+}
+
+.resposta-faq[hidden] {
+    display: none;
+}
+
+/* Chamada para acao -------------------------------------------------------*/
+.secao-chamada-acao {
+    text-align: center;
+}
+
+.secao-chamada-acao p {
+    color: var(--texto-suave);
+}
+
+.grupo-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+/* Formulario de contato ---------------------------------------------------*/
+.secao-contato {
+    display: grid;
+    gap: 20px;
+}
+
+.contato-cabecalho p {
+    color: var(--texto-suave);
+    margin-top: 6px;
+}
+
+#formulario-contato {
+    width: min(100%, 760px);
+}
+
+.campo-duplo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+}
+
+.botao-envio {
+    width: fit-content;
+    margin-bottom: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   RODAPE
+   -------------------------------------------------------------------------- */
+.rodape-site {
+    margin-bottom: 30px;
+}
+
+.rodape-conteudo {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    gap: 24px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio) var(--raio) 0 0;
+    padding: 28px 24px;
+}
+
+.rodape-coluna h3 {
+    margin-bottom: 10px;
+    color: var(--cor-primaria);
+    font-size: 1rem;
+}
+
+.rodape-coluna ul {
+    display: grid;
+    gap: 6px;
+}
+
+.rodape-coluna a {
+    text-decoration: none;
+    color: var(--texto-suave);
+    font-size: 0.94rem;
+}
+
+.rodape-coluna a:hover {
+    color: var(--cor-primaria);
+    text-decoration: underline;
+}
+
+.rodape-base {
+    /* Usa tokens: acompanha o tema escuro (antes era #f0e5d9 fixo) */
+    background: var(--superficie-2);
+    border: 1px solid var(--borda);
+    border-top: none;
+    border-radius: 0 0 var(--raio) var(--raio);
+    padding: 14px 24px;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .secao-destaque {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-servicos {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-numeros {
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+    }
+
+    .rodape-conteudo {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+
+    .cabecalho-site,
+    .menu-principal,
+    .conteudo-site,
+    .rodape-site {
+        width: 94vw;
+    }
+
+    .cabecalho-caixa,
+    .cartao {
+        padding: 18px;
+    }
+
+    .cabecalho-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .menu-lista li {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    .menu-lista a {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .secao-numeros {
+        grid-template-columns: 1fr;
+    }
+
+    .servico {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-duplo {
+        grid-template-columns: 1fr;
+    }
+
+    .botao-principal,
+    .botao-secundario,
+    .botao-envio {
+        width: 100%;
+    }
+
+    .rodape-conteudo {
+        grid-template-columns: 1fr;
+    }
+}

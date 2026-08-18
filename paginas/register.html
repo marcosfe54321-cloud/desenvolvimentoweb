@@ -1,162 +1,201 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empreenda+ Elas - Cadastro</title>
-    <link rel="stylesheet" href="../css/register.css">
- 
+    <meta name="description"
+        content="Crie sua conta gratuita no Empreenda Mais Elas e comece sua trilha de aprendizagem.">
+    <title>Cadastro - Empreenda Mais Elas</title>
+
+    <link rel="icon" href="../img/logo-simbolo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/auth.css">
+
+    <!-- Sem "defer": o tema precisa ser aplicado antes da pagina pintar -->
+    <script src="../js/tema.js"></script>
 </head>
-<body>
 
-    <div class="login-container">
-        <!-- Lado Esquerdo: Imagem e Texto Motivacional -->
-        <div class="banner-side">
-            <div class="logo-box">
-                <div class="logo-circle"></div>
-                <span class="logo-brand">EMPREENDA<br>MAIS ELAS</span>
+<body class="layout-auth">
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <div class="auth-container">
+        <!-- ============ LADO ESQUERDO: IMAGEM ============ -->
+        <header class="auth-banner">
+            <a class="logo-marca" href="../index.html">
+                <img src="../img/logo-simbolo.svg" alt="Empreenda Mais Elas - página inicial"
+                    width="48" height="48">
+                <span class="somente-leitor-tela">Empreenda Mais Elas - página inicial</span>
+            </a>
+
+            <img src="../img/banner-auth.svg"
+                alt="Ilustração de três empreendedoras apoiando umas às outras">
+
+            <div class="auth-banner-texto">
+                <p class="auth-banner-titulo">O sucesso é construído juntas.</p>
+                <p class="auth-banner-apoio">Junte-se à comunidade que eleva mulheres
+                    empreendedoras.</p>
             </div>
-            <h1 class="banner-headline">O SUCESSO É CONSTRUÍDO JUNTAS.</h1>
-            <p class="banner-subtext">Junte-se à comunidade que eleva mulheres empreendedoras.</p>
-        </div>
+        </header>
 
-        <!-- Lado Direito: Formulário de Cadastro -->
-        <div class="form-side">
-            <div class="form-wrapper">
-                <h2 class="welcome-title">Crie sua conta para começar</h2>
+        <!-- ============ LADO DIREITO: FORMULÁRIO ============ -->
+        <main class="auth-formulario" id="conteudo">
+            <div class="auth-caixa">
+                <h1 class="auth-titulo">Crie sua conta para começar</h1>
+                <p class="auth-subtitulo">É gratuito e leva menos de 2 minutos.</p>
 
-                <div class="tabs-container">
-                    <a class="tab-btn" href="login.html">Entrar</a>
-                    <a class="tab-btn active" href="register.html">Cadastrar</a>
-                </div>
+                <nav class="auth-abas" aria-label="Entrar ou cadastrar">
+                    <a class="auth-aba" href="login.html">Entrar</a>
+                    <a class="auth-aba" href="register.html" aria-current="page">Cadastrar</a>
+                </nav>
 
-                <div id="register-message" class="form-message" role="status" aria-live="polite"></div>
+                <p id="mensagem-cadastro" class="mensagem-status auth-mensagem" role="status"
+                    aria-live="polite"></p>
 
-                <form id="register-form" novalidate>
-                    <!-- Campo Nome Completo -->
-                    <div class="input-group">
-                        <label class="input-label" for="register-name">Nome completo</label>
-                        <div class="input-field-wrapper">
-                            <input id="register-name" name="name" type="text" class="input-field" placeholder="Seu nome completo" required>
+                <!-- novalidate: a validação é feita por js/auth.js -->
+                <form id="formulario-cadastro" novalidate>
+                    <div class="campo">
+                        <label for="cadastro-nome">Nome completo</label>
+                        <input type="text" id="cadastro-nome" name="nome" autocomplete="name"
+                            placeholder="Seu nome completo" aria-describedby="erro-nome" required>
+                        <small class="mensagem-erro" id="erro-nome" data-erro-de="nome"
+                            role="alert"></small>
+                    </div>
+
+                    <div class="linha-campos">
+                        <div class="campo">
+                            <label for="cadastro-email">E-mail</label>
+                            <input type="email" id="cadastro-email" name="email"
+                                autocomplete="email" placeholder="seu@email.com"
+                                aria-describedby="erro-email" required>
+                            <small class="mensagem-erro" id="erro-email" data-erro-de="email"
+                                role="alert"></small>
+                        </div>
+
+                        <div class="campo">
+                            <label for="cadastro-telefone">Telefone</label>
+                            <input type="tel" id="cadastro-telefone" name="telefone"
+                                autocomplete="tel" placeholder="(88) 99999-9999"
+                                aria-describedby="erro-telefone" required>
+                            <small class="mensagem-erro" id="erro-telefone"
+                                data-erro-de="telefone" role="alert"></small>
                         </div>
                     </div>
 
-                    <div class="input-row">
-                        <!-- Campo E-mail -->
-                        <div class="input-group">
-                            <label class="input-label" for="register-email">E-mail</label>
-                            <div class="input-field-wrapper">
-                                <input id="register-email" name="email" type="email" class="input-field" placeholder="seu@email.com" required>
-                            </div>
+                    <div class="linha-campos">
+                        <div class="campo">
+                            <label for="cadastro-cidade">Cidade</label>
+                            <input type="text" id="cadastro-cidade" name="cidade"
+                                autocomplete="address-level2" placeholder="Lavras da Mangabeira"
+                                aria-describedby="erro-cidade" required>
+                            <small class="mensagem-erro" id="erro-cidade" data-erro-de="cidade"
+                                role="alert"></small>
                         </div>
 
-                        <!-- Campo Telefone -->
-                        <div class="input-group">
-                            <label class="input-label" for="register-phone">Telefone</label>
-                            <div class="input-field-wrapper">
-                                <input id="register-phone" name="phone" type="tel" class="input-field" placeholder="(88) 99999-9999" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-row">
-                        <!-- Cidade -->
-                        <div class="input-group">
-                            <label class="input-label" for="register-city">Cidade</label>
-                            <div class="input-field-wrapper">
-                                <input id="register-city" name="city" type="text" class="input-field" placeholder="Lavras da Mangabeira" required>
-                            </div>
-                        </div>
-
-                        <!-- Tipo de Negócio -->
-                        <div class="input-group">
-                            <label class="input-label" for="register-business">Tipo de negócio</label>
-                            <div class="input-field-wrapper">
-                                <select id="register-business" name="business" class="input-field input-select" required>
-                                    <option value="" selected disabled>Selecione</option>
-                                    <option value="alimentacao">Alimentação</option>
-                                    <option value="artesanato">Artesanato</option>
-                                    <option value="moda">Moda e beleza</option>
-                                    <option value="servicos">Serviços</option>
-                                    <option value="outros">Outros</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label" for="register-stage">Momento do negócio</label>
-                        <div class="input-field-wrapper">
-                            <select id="register-stage" name="stage" class="input-field input-select" required>
-                                <option value="" selected disabled>Selecione</option>
-                                <option value="inicial">Estou começando agora</option>
-                                <option value="acelerada">Já vendo e quero acelerar</option>
+                        <div class="campo">
+                            <label for="cadastro-negocio">Tipo de negócio</label>
+                            <select id="cadastro-negocio" name="negocio"
+                                aria-describedby="erro-negocio" required>
+                                <option value="">Selecione</option>
+                                <option value="alimentacao">Alimentação</option>
+                                <option value="artesanato">Artesanato</option>
+                                <option value="moda">Moda e beleza</option>
+                                <option value="servicos">Serviços</option>
+                                <option value="outros">Outros</option>
                             </select>
-                        </div>
-                        <p class="helper-text">Isso ajuda a indicar conteúdos e trilhas mais adequadas.</p>
-                    </div>
-
-                    <!-- Campo Senha -->
-                    <div class="input-group has-icon">
-                        <label class="input-label" for="register-password">Senha</label>
-                        <div class="input-field-wrapper">
-                            <span class="input-icon">&#128274;</span>
-                            <input id="register-password" name="password" type="password" class="input-field" placeholder="Crie uma senha com no mínimo 6 caracteres" required>
-                            <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">&#128065;</button>
+                            <small class="mensagem-erro" id="erro-negocio"
+                                data-erro-de="negocio" role="alert"></small>
                         </div>
                     </div>
 
-                    <!-- Campo Confirmar Senha -->
-                    <div class="input-group has-icon">
-                        <label class="input-label" for="register-confirm-password">Confirmar senha</label>
-                        <div class="input-field-wrapper">
-                            <span class="input-icon">&#128274;</span>
-                            <input id="register-confirm-password" name="confirmPassword" type="password" class="input-field" placeholder="Repita a senha" required>
-                            <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">&#128065;</button>
-                        </div>
+                    <div class="campo">
+                        <label for="cadastro-momento">Momento do negócio</label>
+                        <select id="cadastro-momento" name="momento"
+                            aria-describedby="ajuda-momento erro-momento" required>
+                            <option value="">Selecione</option>
+                            <option value="inicial">Estou começando agora</option>
+                            <option value="vendendo">Já vendo, sem constância</option>
+                            <option value="acelerada">Já vendo e quero acelerar</option>
+                        </select>
+                        <small class="texto-auxiliar" id="ajuda-momento">
+                            Isso ajuda a indicar conteúdos e trilhas mais adequadas.
+                        </small>
+                        <small class="mensagem-erro" id="erro-momento" data-erro-de="momento"
+                            role="alert"></small>
                     </div>
 
-                    <label class="checkbox-line" for="register-terms">
-                        <input id="register-terms" name="terms" type="checkbox" required>
-                        <span>Li e concordo com os <a href="../index.html">termos</a> e política de privacidade.</span>
+                    <div class="campo">
+                        <label for="cadastro-senha">Senha</label>
+                        <div class="campo-com-icone">
+                            <span class="icone-campo" aria-hidden="true">🔒</span>
+                            <input type="password" id="cadastro-senha" name="senha"
+                                autocomplete="new-password"
+                                placeholder="No mínimo 6 caracteres"
+                                aria-describedby="erro-senha" required>
+                            <button type="button" class="mostrar-senha"
+                                aria-label="Mostrar senha">👁</button>
+                        </div>
+                        <small class="mensagem-erro" id="erro-senha" data-erro-de="senha"
+                            role="alert"></small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="cadastro-confirmar">Confirmar senha</label>
+                        <div class="campo-com-icone">
+                            <span class="icone-campo" aria-hidden="true">🔒</span>
+                            <input type="password" id="cadastro-confirmar" name="confirmarSenha"
+                                autocomplete="new-password" placeholder="Repita a senha"
+                                aria-describedby="erro-confirmar" required>
+                            <button type="button" class="mostrar-senha"
+                                aria-label="Mostrar senha">👁</button>
+                        </div>
+                        <small class="mensagem-erro" id="erro-confirmar"
+                            data-erro-de="confirmarSenha" role="alert"></small>
+                    </div>
+
+                    <label class="linha-checkbox" for="cadastro-termos">
+                        <input type="checkbox" id="cadastro-termos" name="termos" required>
+                        <span>Li e concordo com os
+                            <a href="../index.html#faq">termos de uso</a> e a política de
+                            privacidade.</span>
                     </label>
 
-                    <!-- Botão de cadastro -->
-                    <button type="submit" class="btn-submit">Cadastrar</button>
+                    <button type="submit" class="botao-principal auth-enviar">Cadastrar</button>
 
-                    <!-- Divisor -->
-                    <div class="divider">OU CADASTRAR COM</div>
+                    <p class="divisor">OU CADASTRAR COM</p>
 
-                    <!-- Provedores Sociais -->
-                    <div class="social-container">
-                        <button type="button" class="btn-social">
-                            <span>G</span> Google
+                    <div class="botoes-sociais">
+                        <button type="button" class="botao-social">
+                            <span class="marca-social" aria-hidden="true">G</span> Google
                         </button>
-                        <button type="button" class="btn-social">
-                            <span>f</span> Facebook
+                        <button type="button" class="botao-social">
+                            <span class="marca-social" aria-hidden="true">f</span> Facebook
                         </button>
                     </div>
 
-                    <p class="form-extra-link">Já tem conta? <a href="login.html">Entrar agora</a></p>
+                    <p class="link-extra">
+                        Já tem conta? <a href="login.html">Entrar agora</a>
+                    </p>
                 </form>
             </div>
-        </div>
+        </main>
     </div>
 
-    <!-- Rodapé -->
-    <footer class="footer-bar">
-        <div class="footer-links">
-            <a href="../index.html">Sobre</a>
-            <a href="../index.html">Políticas de Privacidade</a>
-            <a href="../index.html">Termos e serviços</a>
-            <a href="../index.html">Contato e Suporte</a>
-        </div>
-        <div>
-            &copy; 2026 Empreenda Mais Elas
-        </div>
+    <!-- ================= RODAPÉ ================= -->
+    <footer class="rodape-auth">
+        <nav aria-label="Links do rodapé">
+            <ul>
+                <li><a href="../index.html">Início do site</a></li>
+                <li><a href="../index.html#servicos">Nossos serviços</a></li>
+                <li><a href="../index.html#faq">Perguntas frequentes</a></li>
+                <li><a href="../index.html#contato">Contato e suporte</a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2026 Empreenda Mais Elas</p>
     </footer>
 
-    <script src="../js/auth.js"></script>
-
+    <script src="../js/auth.js" defer></script>
 </body>
+
 </html>
