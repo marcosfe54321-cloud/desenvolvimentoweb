@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-label="Ilustração de três empreendedoras reunidas em volta de um quadro de metas">
+  <rect width="560" height="340" rx="20" fill="#fbf1e9"/>
+  <circle cx="470" cy="70" r="46" fill="#f2ddd5"/>
+  <rect x="60" y="42" width="230" height="150" rx="12" fill="#ffffff" stroke="#e8ddd1" stroke-width="2"/>
+  <rect x="80" y="66" width="120" height="10" rx="5" fill="#a63232"/>
+  <rect x="80" y="90" width="180" height="8" rx="4" fill="#e2d6ca"/>
+  <rect x="80" y="110" width="150" height="8" rx="4" fill="#e2d6ca"/>
+  <rect x="80" y="136" width="60" height="38" rx="6" fill="#f2ddd5"/>
+  <rect x="150" y="136" width="60" height="38" rx="6" fill="#f2ddd5"/>
+  <g>
+    <circle cx="150" cy="240" r="28" fill="#c98b6b"/>
+    <path d="M114 340c0-24 16-40 36-40s36 16 36 40z" fill="#a63232"/>
+  </g>
+  <g>
+    <circle cx="250" cy="228" r="30" fill="#8d5a3c"/>
+    <path d="M210 340c0-27 18-45 40-45s40 18 40 45z" fill="#c9553f"/>
+  </g>
+  <g>
+    <circle cx="355" cy="240" r="28" fill="#e0a887"/>
+    <path d="M319 340c0-24 16-40 36-40s36 16 36 40z" fill="#842525"/>
+  </g>
+  <path d="M400 200l24-24 24 24" fill="none" stroke="#a63232" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="416" y="196" width="16" height="60" rx="4" fill="#a63232"/>
+</svg>

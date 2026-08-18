@@ -1,0 +1,671 @@
+/* ==========================================================================
+   PAINEL.CSS - Layout compartilhado pelas paginas internas
+   dashboard, diagnostico, trilhas, mentorias, marketplace,
+   painelempreendedora e paineladministrativo.
+   Substitui as ~1.700 linhas de <style> que estavam duplicadas dentro do HTML.
+   Depende de base.css, que deve ser carregado antes.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ESTRUTURA GERAL
+   -------------------------------------------------------------------------- */
+body.layout-painel {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--fundo);
+}
+
+/* Coluna da direita: cabecalho + conteudo + rodape */
+.area-conteudo {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   2. MENU LATERAL
+   -------------------------------------------------------------------------- */
+.menu-lateral {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--superficie);
+    border-right: 1px solid var(--borda);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.menu-lateral .logo-marca {
+    margin-bottom: 8px;
+}
+
+.menu-lateral .logo-marca img {
+    height: 44px;
+}
+
+.menu-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-itens a {
+    display: block;
+    padding: 11px 14px;
+    border-radius: var(--raio-pequeno);
+    color: var(--texto-suave);
+    text-decoration: none;
+    font-size: 0.94rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-itens a:hover {
+    background: var(--cor-primaria-suave);
+    color: var(--cor-primaria);
+}
+
+.menu-itens a[aria-current="page"] {
+    background: var(--cor-primaria);
+    color: var(--texto-botao);
+}
+
+/* Bloco final do menu: voltar ao site e sair */
+.menu-rodape {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--borda);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-rodape a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: var(--raio-pequeno);
+    color: var(--texto-suave);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.menu-rodape a:hover {
+    background: var(--cor-primaria-suave);
+    color: var(--cor-primaria);
+}
+
+/* --------------------------------------------------------------------------
+   3. CABECALHO DA AREA INTERNA
+   -------------------------------------------------------------------------- */
+.topo-painel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--borda);
+    background: var(--superficie);
+}
+
+.trilha-navegacao {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.topo-acoes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.perfil-usuaria {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.perfil-usuaria .nome-usuaria {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.perfil-usuaria img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--borda);
+}
+
+/* --------------------------------------------------------------------------
+   4. CONTEUDO PRINCIPAL
+   -------------------------------------------------------------------------- */
+.conteudo-painel {
+    flex: 1;
+    padding: 32px;
+    display: grid;
+    gap: 28px;
+    align-content: start;
+}
+
+.intro-pagina .titulo-pagina {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: var(--texto);
+    margin-bottom: 6px;
+}
+
+.intro-pagina .descricao-pagina {
+    color: var(--texto-suave);
+    max-width: 70ch;
+}
+
+.titulo-secao {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   5. CARTOES
+   -------------------------------------------------------------------------- */
+.cartao {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--sombra-suave);
+}
+
+.grade-cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+/* Cartao de indicador (dashboard / paineis) */
+.cartao-indicador {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 130px;
+}
+
+.rotulo-indicador {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--texto-suave);
+}
+
+.valor-indicador {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin-top: 4px;
+}
+
+.apoio-indicador {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+/* --------------------------------------------------------------------------
+   6. BARRA DE PROGRESSO
+   -------------------------------------------------------------------------- */
+.progresso {
+    display: grid;
+    gap: 6px;
+}
+
+.progresso-texto {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+}
+
+.progresso-trilho {
+    height: 8px;
+    border-radius: 999px;
+    background: var(--borda);
+    overflow: hidden;
+}
+
+.progresso-preenchimento {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--cor-primaria);
+    transition: width 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   7. CARTAO DE TRILHA / CURSO
+   -------------------------------------------------------------------------- */
+.cartao-trilha {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.cartao-trilha h3 {
+    font-size: 1.05rem;
+    margin: 10px 0 8px;
+}
+
+.cartao-trilha p {
+    color: var(--texto-suave);
+    font-size: 0.92rem;
+}
+
+.rodape-cartao {
+    display: grid;
+    gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   8. LISTA DE MENTORAS
+   -------------------------------------------------------------------------- */
+.lista-mentoras {
+    display: grid;
+    gap: 14px;
+}
+
+.cartao-mentora {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.info-mentora {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.info-mentora img {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid var(--borda);
+}
+
+.info-mentora h3 {
+    font-size: 1rem;
+}
+
+.info-mentora p {
+    font-size: 0.87rem;
+    color: var(--texto-suave);
+}
+
+.layout-duas-colunas {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.agendamento {
+    display: grid;
+    gap: 8px;
+}
+
+.agendamento h3 {
+    font-size: 1rem;
+}
+
+.agendamento p {
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+}
+
+/* --------------------------------------------------------------------------
+   9. MARKETPLACE
+   -------------------------------------------------------------------------- */
+.barra-busca {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.barra-busca .campo {
+    flex: 1 1 260px;
+    margin-bottom: 0;
+}
+
+.cartao-produto {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cartao-produto img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.corpo-produto {
+    padding: 18px;
+    display: grid;
+    gap: 6px;
+    flex: 1;
+    align-content: start;
+}
+
+.corpo-produto h3 {
+    font-size: 1rem;
+}
+
+.vendedora-produto {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+.preco-produto {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-top: 4px;
+}
+
+/* Mensagem de "nenhum resultado" da busca */
+.sem-resultado {
+    grid-column: 1 / -1;
+    padding: 24px;
+    text-align: center;
+    color: var(--texto-suave);
+    border: 1px dashed var(--borda);
+    border-radius: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   10. QUIZ DO DIAGNOSTICO
+   -------------------------------------------------------------------------- */
+.caixa-quiz {
+    max-width: 720px;
+    margin-inline: auto;
+    width: 100%;
+}
+
+.etapa-quiz {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+.pergunta-quiz {
+    font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+    margin-bottom: 22px;
+}
+
+/* fieldset/legend reais no lugar das divs falsas */
+.grupo-opcoes {
+    border: none;
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.opcao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 2px solid var(--borda);
+    border-radius: 12px;
+    background: var(--superficie-2);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.opcao:hover {
+    border-color: var(--cor-primaria);
+}
+
+.opcao input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: var(--cor-primaria);
+    margin: 0;
+}
+
+/* Destaque quando a opcao esta marcada */
+.opcao:has(input:checked) {
+    border-color: var(--cor-primaria);
+    background: var(--cor-primaria-suave);
+}
+
+.opcao:has(input:focus-visible) {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+.acoes-quiz {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.resultado-quiz {
+    display: grid;
+    gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   11. TABELA ADMINISTRATIVA
+   -------------------------------------------------------------------------- */
+.rolagem-tabela {
+    overflow-x: auto;
+}
+
+.tabela-admin {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-admin th {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--texto-suave);
+    padding: 0 12px 14px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.tabela-admin td {
+    font-size: 0.9rem;
+    padding: 16px 12px 16px 0;
+    border-bottom: 1px solid var(--borda);
+    vertical-align: middle;
+}
+
+.tabela-admin .celula-destaque {
+    font-weight: 600;
+}
+
+.botao-tabela {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   12. JANELA MODAL (agendamento de mentoria)
+   -------------------------------------------------------------------------- */
+.modal {
+    border: none;
+    padding: 0;
+    border-radius: var(--raio);
+    background: var(--superficie);
+    color: var(--texto);
+    width: min(520px, 92vw);
+    box-shadow: var(--sombra);
+}
+
+.modal::backdrop {
+    background: rgba(20, 12, 12, 0.55);
+}
+
+.modal-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px 0;
+}
+
+.modal-cabecalho h2 {
+    font-size: 1.15rem;
+}
+
+.modal-corpo {
+    padding: 18px 24px 24px;
+}
+
+.fechar-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--texto-suave);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.fechar-modal:hover {
+    background: var(--cor-primaria-suave);
+    color: var(--cor-primaria);
+}
+
+/* --------------------------------------------------------------------------
+   13. RODAPE DA AREA INTERNA
+   -------------------------------------------------------------------------- */
+.rodape-painel {
+    padding: 20px 32px;
+    border-top: 1px solid var(--borda);
+    background: var(--superficie);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.87rem;
+    color: var(--texto-suave);
+}
+
+.rodape-painel ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.rodape-painel a {
+    color: var(--texto-suave);
+    text-decoration: none;
+}
+
+.rodape-painel a:hover {
+    color: var(--cor-primaria);
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   14. RESPONSIVIDADE
+   Breakpoint em 1024px (antes 768px): entre 769px e 1024px a barra lateral
+   de 260px espremia demais o conteudo em tablets.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    body.layout-painel {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--borda);
+        padding: 16px 20px;
+        gap: 14px;
+    }
+
+    .menu-itens {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .menu-itens a {
+        flex: 1 1 160px;
+        text-align: center;
+    }
+
+    .menu-rodape {
+        margin-top: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 14px;
+    }
+
+    .menu-rodape a {
+        flex: 1 1 160px;
+        text-align: center;
+    }
+
+    .layout-duas-colunas {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .topo-painel,
+    .conteudo-painel,
+    .rodape-painel {
+        padding-inline: 18px;
+    }
+
+    .conteudo-painel {
+        padding-block: 22px;
+        gap: 22px;
+    }
+
+    .topo-painel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .grade-cartoes {
+        grid-template-columns: 1fr;
+    }
+
+    .cartao-mentora {
+        align-items: stretch;
+    }
+
+    .cartao-mentora .botao-principal {
+        width: 100%;
+    }
+
+    .acoes-quiz .botao-principal,
+    .acoes-quiz .botao-secundario {
+        flex: 1 1 140px;
+    }
+}

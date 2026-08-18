@@ -1,0 +1,386 @@
+/* ==========================================================================
+   AUTH.CSS - Paginas de login e cadastro
+   Antes: css/register.css (404 linhas) + <style> identico dentro de
+   login.html (363 linhas). Agora um arquivo unico para as duas paginas.
+   Depende de base.css, que deve ser carregado antes.
+   ========================================================================== */
+
+body.layout-auth {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fundo);
+}
+
+/* --------------------------------------------------------------------------
+   1. ESTRUTURA EM DUAS COLUNAS
+   -------------------------------------------------------------------------- */
+.auth-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Lado esquerdo: imagem + chamada -----------------------------------------*/
+.auth-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 56px 48px;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.auth-banner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Vela a imagem para o texto branco ter contraste suficiente */
+.auth-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(30, 8, 8, 0.15) 0%, rgba(30, 8, 8, 0.7) 100%);
+    z-index: 1;
+}
+
+.auth-banner-texto {
+    position: relative;
+    z-index: 2;
+    max-width: 34ch;
+}
+
+.auth-banner .logo-marca {
+    position: absolute;
+    top: 40px;
+    left: 48px;
+    z-index: 2;
+}
+
+.auth-banner-titulo {
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    margin-bottom: 12px;
+}
+
+.auth-banner-apoio {
+    font-size: 1rem;
+    opacity: 0.92;
+}
+
+/* Lado direito: formulario ------------------------------------------------*/
+.auth-formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 40px;
+    background: var(--superficie);
+}
+
+.auth-caixa {
+    width: min(440px, 100%);
+}
+
+.auth-titulo {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.auth-subtitulo {
+    font-size: 0.94rem;
+    color: var(--texto-suave);
+    margin-bottom: 26px;
+}
+
+/* --------------------------------------------------------------------------
+   2. ABAS ENTRAR / CADASTRAR
+   -------------------------------------------------------------------------- */
+.auth-abas {
+    display: flex;
+    gap: 6px;
+    background: var(--superficie-2);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-pequeno);
+    padding: 5px;
+    margin-bottom: 22px;
+}
+
+.auth-aba {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--texto-suave);
+}
+
+.auth-aba:hover {
+    color: var(--cor-primaria);
+}
+
+.auth-aba[aria-current="page"] {
+    background: var(--cor-primaria);
+    color: var(--texto-botao);
+}
+
+/* --------------------------------------------------------------------------
+   3. CAMPOS
+   -------------------------------------------------------------------------- */
+.linha-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14px;
+}
+
+/* Envolve o input para posicionar icone e botao de mostrar senha */
+.campo-com-icone {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-com-icone .icone-campo {
+    position: absolute;
+    left: 14px;
+    color: var(--texto-suave);
+    pointer-events: none;
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.campo-com-icone input {
+    padding-left: 42px;
+}
+
+.campo-com-icone:has(.mostrar-senha) input {
+    padding-right: 46px;
+}
+
+.mostrar-senha {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--texto-suave);
+}
+
+.mostrar-senha:hover {
+    background: var(--cor-primaria-suave);
+}
+
+.texto-auxiliar {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+/* Linha "lembrar de mim" + "esqueci minha senha" --------------------------*/
+.linha-lembrar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 4px 0 20px;
+    font-size: 0.88rem;
+}
+
+.linha-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-bottom: 18px;
+}
+
+.linha-lembrar .linha-checkbox {
+    margin-bottom: 0;
+}
+
+.linha-checkbox input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    accent-color: var(--cor-primaria);
+}
+
+.esqueci-senha {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.esqueci-senha:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   4. BOTAO E RODAPE DO FORMULARIO
+   -------------------------------------------------------------------------- */
+.auth-enviar {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+}
+
+.auth-mensagem {
+    margin-bottom: 18px;
+}
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 24px 0 18px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--texto-suave);
+}
+
+.divisor::before,
+.divisor::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--borda);
+}
+
+.botoes-sociais {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.botao-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-pequeno);
+    background: var(--superficie);
+    color: var(--texto);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-social:hover {
+    background: var(--superficie-2);
+    border-color: var(--cor-primaria);
+}
+
+.botao-social .marca-social {
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.link-extra {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+.link-extra a {
+    color: var(--cor-primaria);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.link-extra a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   5. RODAPE DA PAGINA
+   -------------------------------------------------------------------------- */
+.rodape-auth {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 20px 40px;
+    background: var(--superficie-2);
+    border-top: 1px solid var(--borda);
+    font-size: 0.86rem;
+    color: var(--texto-suave);
+}
+
+.rodape-auth ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.rodape-auth a {
+    color: var(--texto-suave);
+    text-decoration: none;
+}
+
+.rodape-auth a:hover {
+    color: var(--cor-primaria);
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 868px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-banner {
+        min-height: 260px;
+        padding: 90px 28px 32px;
+    }
+
+    .auth-banner .logo-marca {
+        top: 26px;
+        left: 28px;
+    }
+
+    .auth-formulario {
+        padding: 40px 24px;
+    }
+
+    .linha-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .rodape-auth {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .rodape-auth ul {
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .botoes-sociais {
+        grid-template-columns: 1fr;
+    }
+}
